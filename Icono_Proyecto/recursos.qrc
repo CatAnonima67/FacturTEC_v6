@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="fondoLogin">
+    <file>Tec_1.png</file>
+    <file>Tec_2.png</file>
+  </qresource>
+</RCC>
