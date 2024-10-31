@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1220</width>
+    <width>1203</width>
     <height>858</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>50</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -16,9 +22,9 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -34,27 +40,27 @@
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="ButtonText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -63,9 +69,9 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -81,27 +87,27 @@
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="ButtonText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -146,9 +152,9 @@
      <colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -885,7 +891,7 @@ border: 1px solid white;
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>5</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="page_Principal">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -972,7 +978,7 @@ font-family:Arial;
                <widget class="QFrame" name="frame_SuperiorAlumno">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>1000</width>
                   <height>40</height>
                  </size>
                 </property>
@@ -987,7 +993,7 @@ font-family:Arial;
                   <number>0</number>
                  </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>50</number>
                  </property>
                  <property name="topMargin">
                   <number>0</number>
@@ -1023,6 +1029,12 @@ font-family:Arial;
                  </item>
                  <item>
                   <widget class="QComboBox" name="comboBox_BuscarAlumno">
+                   <property name="maximumSize">
+                    <size>
+                     <width>800</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -1048,29 +1060,29 @@ font-family:Arial;
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>1000</width>
+                  <height>600</height>
+                 </size>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
+                <layout class="QFormLayout" name="formLayout">
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>40</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item>
+                 <item row="0" column="0">
                   <widget class="QFrame" name="frame_LabelAlumno">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1079,7 +1091,19 @@ font-family:Arial;
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <property name="spacing">
+                     <number>25</number>
+                    </property>
                     <property name="leftMargin">
+                     <number>25</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>10</number>
+                    </property>
+                    <property name="bottomMargin">
                      <number>0</number>
                     </property>
                     <item>
@@ -1092,14 +1116,21 @@ font-family:Arial;
                     <item>
                      <widget class="QLabel" name="label_2">
                       <property name="text">
-                       <string>Apellido Paterno:</string>
+                       <string>Apellido Materno:</string>
                       </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QLabel" name="label_ApellidosAlumno">
                       <property name="text">
-                       <string>Apellido Materno:</string>
+                       <string>Apellido Paterno:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>Fecha de Nacimiento</string>
                       </property>
                      </widget>
                     </item>
@@ -1125,6 +1156,13 @@ font-family:Arial;
                      </widget>
                     </item>
                     <item>
+                     <widget class="QLabel" name="label_15">
+                      <property name="text">
+                       <string>Cantidad a Pagar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QLabel" name="label_RFCtutorAlumno">
                       <property name="text">
                        <string>RFC del tutor:</string>
@@ -1134,7 +1172,7 @@ font-family:Arial;
                    </layout>
                   </widget>
                  </item>
-                 <item>
+                 <item row="0" column="1">
                   <widget class="QFrame" name="frame_LineEditAlumno">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1144,7 +1182,7 @@ font-family:Arial;
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_11">
                     <property name="spacing">
-                     <number>30</number>
+                     <number>25</number>
                     </property>
                     <property name="leftMargin">
                      <number>0</number>
@@ -1176,6 +1214,20 @@ font-family:Arial;
                      </widget>
                     </item>
                     <item>
+                     <widget class="QLineEdit" name="lineEdit_Fecha_Nacimiento">
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+font-size: 15px;
+font-family: arial;
+color:rgb(75,145,210)
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>DD/MM/AAAA</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QLineEdit" name="lineEdit_CURPalumno"/>
                     </item>
                     <item>
@@ -1199,6 +1251,27 @@ font-family:arial;
                      </widget>
                     </item>
                     <item>
+                     <widget class="QLabel" name="label_16">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>35</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{
+font-size: 20px;
+font-family: arial;
+color:black;
+Font-weight:bold;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>$ 0000</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QLineEdit" name="lineEdit_RFCtutorAlumno"/>
                     </item>
                    </layout>
@@ -1207,13 +1280,17 @@ font-family:arial;
                 </layout>
                </widget>
               </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QFrame" name="frame_Inferior">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
+              <item>
+               <widget class="QFrame" name="frame_17">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+color:black;
+background-color: rgb(206,202,210);
+padding: 10px;
+}
+QPushButton:hover{
+border: 1px solid black;
+}</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1221,68 +1298,67 @@ font-family:arial;
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <layout class="QHBoxLayout" name="horizontalLayout_37">
                  <property name="spacing">
-                  <number>400</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>150</number>
+                  <number>6</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>150</number>
+                  <number>9</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="pushButton_EliminarAlumno">
+                  <widget class="QPushButton" name="PushBoton_Insertar_Alumno">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
-background-color:rgb(209,48,48);
-color:rgb(255,255,255);
-font-family: Arial;
-font-size:16px;
-padding:5px;
+color:black;
 }
 
 QPushButton:hover{
-background-color:rgb(215,50,50);
-border:1px solid black;
+border: 1px solid black;
+background-color:rgb(80,150,210);
 }</string>
                    </property>
                    <property name="text">
-                    <string>Eliminar</string>
+                    <string>INSERTAR</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_GuardarAlumno">
+                  <widget class="QPushButton" name="PushBoton_Modificar_Alumno">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
-background-color: rgb(206,202,210);
-padding: 5px;
-font-size:16px;
+color:black;
 }
+
 QPushButton:hover{
-background-color:rgb(220,220,220);
-border:1px solid black;
+border: 1px solid black;
 }</string>
                    </property>
                    <property name="text">
-                    <string>Guardar</string>
+                    <string>MODIFICAR</string>
                    </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>Icono_Proyecto/Icono_guardar.png</normaloff>Icono_Proyecto/Icono_guardar.png</iconset>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="PushBoton_Eliminar_Alumno">
+                   <property name="enabled">
+                    <bool>true</bool>
                    </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>30</width>
-                     <height>30</height>
-                    </size>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+color:black;
+}
+
+QPushButton:hover{
+border: 1px solid black;
+background-color:rgb(210,50,50);
+color:White;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>ELIMINAR</string>
                    </property>
                   </widget>
                  </item>
@@ -1338,13 +1414,15 @@ color:black;
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLabel{
-font-size: 20px;
+font-size: 25px;
 font-family: arial;
+color:black;
+Font-weight:bold;
 
 }</string>
                    </property>
                    <property name="text">
-                    <string>HISTORIAL DE INGRESO AL SISTEMA</string>
+                    <string>HISTORIAL DE INGRESO A LA APLICACIÓN</string>
                    </property>
                   </widget>
                  </item>
@@ -1456,29 +1534,30 @@ padding: 10px;
                  </property>
                  <item>
                   <widget class="QPushButton" name="pushButton_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton:hover{
+border: 1px solid black;
+background-color:rgb(80,150,210);
+}</string>
+                   </property>
                    <property name="text">
                     <string>Visualizar</string>
                    </property>
                    <property name="icon">
                     <iconset>
                      <normaloff>Icono_Proyecto/Icono_Vizualizar.png</normaloff>Icono_Proyecto/Icono_Vizualizar.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>28</width>
-                     <height>28</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_3">
-                   <property name="text">
-                    <string>Imprimir</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>Icono_Proyecto/printer_96620.png</normaloff>Icono_Proyecto/printer_96620.png</iconset>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -2201,11 +2280,17 @@ border-radius: 10px;
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame_DatosPadre">
+               <widget class="QFrame" name="frame_Principal_Padre">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
-                  <height>200</height>
+                  <width>1000</width>
+                  <height>600</height>
                  </size>
                 </property>
                 <property name="frameShape">
@@ -2214,28 +2299,78 @@ border-radius: 10px;
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_13">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item alignment="Qt::AlignVCenter">
-                  <widget class="QFrame" name="frame_NombrePadre">
+                <layout class="QFormLayout" name="formLayout_3">
+                 <item row="0" column="0">
+                  <widget class="QFrame" name="frame_LabelPadre">
+                   <property name="styleSheet">
+                    <string notr="true">padding:0px;</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <property name="spacing">
+                     <number>10</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>25</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>10</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_NombreAlumno_2">
+                      <property name="text">
+                       <string>Nombre del Padre:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>Apellido Materno:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_ApellidosAlumno_2">
+                      <property name="text">
+                       <string>Apellido Paterno:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_CurpAlumno_2">
+                      <property name="text">
+                       <string>RFC:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_ClaveTrabajoAlumno_2">
+                      <property name="text">
+                       <string>Correo Electronico:</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QFrame" name="frame_LineEditPadre">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>120</height>
+                     <height>200</height>
                     </size>
                    </property>
                    <property name="frameShape">
@@ -2246,7 +2381,7 @@ border-radius: 10px;
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_14">
                     <property name="spacing">
-                     <number>0</number>
+                     <number>10</number>
                     </property>
                     <property name="leftMargin">
                      <number>0</number>
@@ -2261,361 +2396,113 @@ border-radius: 10px;
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="frame_">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>50</height>
-                       </size>
+                     <widget class="QLineEdit" name="lineEdit_NombreAlumno_2">
+                      <property name="maxLength">
+                       <number>50</number>
                       </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_13">
-                       <item>
-                        <widget class="QLabel" name="label_NombrePadre">
-                         <property name="text">
-                          <string>Nombre:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_NombrePadre">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLineEdit{
-padding:10px;
-}</string>
-                         </property>
-                         <property name="maxLength">
-                          <number>50</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
+                     <widget class="QLineEdit" name="lineEdit_ApellidoPalumno_2"/>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lineEdit_ApellidoMAlumno_2">
+                      <property name="maxLength">
+                       <number>50</number>
                       </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_24">
-                       <item>
-                        <widget class="QLabel" name="label">
-                         <property name="text">
-                          <string>Apellido Paterno:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_ApellidoPpadre">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="maxLength">
-                          <number>50</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="frame_2">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_25">
-                       <item>
-                        <widget class="QLabel" name="label_3">
-                         <property name="text">
-                          <string>Apellido Materno:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_ApellidoMpadre">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="maxLength">
-                          <number>50</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
+                     <widget class="QLineEdit" name="lineEdit_CURPalumno_2"/>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lineEdit_ClaveTrabajoAlumno_2"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item>
-                  <widget class="QFrame" name="frame_RfCorreo">
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_19">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>45</height>
+                     <height>35</height>
                     </size>
                    </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+font-size: 20px;
+font-family: arial;
+color:black;
+Font-weight:bold;
+}</string>
                    </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
+                   <property name="text">
+                    <string>Datos Fiscales</string>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_12">
-                    <item>
-                     <widget class="QLabel" name="label_RFCPadre">
-                      <property name="text">
-                       <string>RFC:</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_RFCPadre">
-                      <property name="maxLength">
-                       <number>13</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_CorreoElectronicoPadre">
-                      <property name="text">
-                       <string>Correo electrónico:</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_CorreoElectronicoPadre">
-                      <property name="maxLength">
-                       <number>40</number>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
                   </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_28">
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit"/>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_3"/>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_2"/>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_4"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                   <item>
+                    <widget class="QLabel" name="label_17">
+                     <property name="text">
+                      <string>Regimen</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Codigo Postal</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_18">
+                     <property name="text">
+                      <string>Calle</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_20">
+                     <property name="text">
+                      <string>Municipio</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame_DatosFiscalesPadre">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_15">
-                 <item>
-                  <widget class="QFrame" name="frame_LabelDatosFiscal">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_15">
-                    <item>
-                     <widget class="QLabel" name="label_DatosFiscales">
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-font-weight:bold;
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Datos Fiscales</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_PrincipalDatosFiscal">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_16">
-                    <item>
-                     <widget class="QFrame" name="frame_Regimen">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_18">
-                       <item>
-                        <widget class="QLabel" name="label_Regimen">
-                         <property name="maximumSize">
-                          <size>
-                           <width>120</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="text">
-                          <string>Régimen Fiscal:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="comboBox_Regimen">
-                         <property name="styleSheet">
-                          <string notr="true">QComboBox{
-background-color:rgb(217,217,217);
-color:black;
-border-radius:15px;
-padding:6px;
-font-size: 16px;
-font-family: Arial;
-}</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_cpColonia">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_17">
-                       <item>
-                        <widget class="QLabel" name="label_CodigoPostal">
-                         <property name="text">
-                          <string>Código Postal:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_CodigoPostal"/>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_Colonia">
-                         <property name="text">
-                          <string>Colonia:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_Colonia"/>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="frame_EstadoMun">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_16">
-                       <item>
-                        <widget class="QLabel" name="label_Calle">
-                         <property name="text">
-                          <string>Calle:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_Calle"/>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_Estado">
-                         <property name="text">
-                          <string>Estado:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_Estado"/>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignLeft">
-                     <widget class="QFrame" name="frame_3">
-                      <property name="minimumSize">
-                       <size>
-                        <width>500</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_26">
-                       <item>
-                        <widget class="QLabel" name="label_Municipio">
-                         <property name="text">
-                          <string>Municipio:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_Municipio"/>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item alignment="Qt::AlignHCenter">
-               <widget class="QFrame" name="frame_InferiorPadre">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
+               <widget class="QFrame" name="frame_18">
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-font-size:16px;
-font-family:Arial;
+color:black;
+background-color: rgb(206,202,210);
+padding: 10px;
+}
+QPushButton:hover{
+border: 1px solid black;
 }</string>
                 </property>
                 <property name="frameShape">
@@ -2624,65 +2511,67 @@ font-family:Arial;
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <layout class="QHBoxLayout" name="horizontalLayout_38">
                  <property name="spacing">
-                  <number>400</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>150</number>
+                  <number>6</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>150</number>
+                  <number>9</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="pushButton_EliminarPadre">
+                  <widget class="QPushButton" name="PushBoton_Insertar_Alumno_2">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
-color:White;
-background-color:rgb(209,48,48);
-padding:6px;
+color:black;
 }
+
 QPushButton:hover{
-background-color:rgb(200,50,50);
 border: 1px solid black;
+background-color:rgb(80,150,210);
 }</string>
                    </property>
                    <property name="text">
-                    <string>Eliminar</string>
+                    <string>INSERTAR</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_GuardarPadre">
+                  <widget class="QPushButton" name="PushBoton_Modificar_Alumno_2">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
 color:black;
-background-color: rgb(206,202,210);
-padding:1px;
 }
+
 QPushButton:hover{
-background-color:rgb(225,225,225);
 border: 1px solid black;
 }</string>
                    </property>
                    <property name="text">
-                    <string>Guardar</string>
+                    <string>MODIFICAR</string>
                    </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>Icono_Proyecto/Icono_guardar.png</normaloff>Icono_Proyecto/Icono_guardar.png</iconset>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="PushBoton_Eliminar_Alumno_2">
+                   <property name="enabled">
+                    <bool>true</bool>
                    </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>30</width>
-                     <height>30</height>
-                    </size>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+color:black;
+}
+
+QPushButton:hover{
+border: 1px solid black;
+background-color:rgb(210,50,50);
+color:White;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>ELIMINAR</string>
                    </property>
                   </widget>
                  </item>
@@ -2695,9 +2584,15 @@ border: 1px solid black;
              <layout class="QVBoxLayout" name="verticalLayout_22">
               <item>
                <widget class="QWidget" name="widget" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_23" stretch="40,40,20">
+                <layout class="QVBoxLayout" name="verticalLayout_23" stretch="40,20">
                  <item>
                   <widget class="QFrame" name="frame_14">
+                   <property name="maximumSize">
+                    <size>
+                     <width>900</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -2721,6 +2616,12 @@ color:black;
                       <layout class="QVBoxLayout" name="verticalLayout_24">
                        <item>
                         <widget class="QLabel" name="label_6">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
                          <property name="text">
                           <string>BUSCAR</string>
                          </property>
@@ -2728,6 +2629,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_7">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
                          <property name="text">
                           <string>RFC</string>
                          </property>
@@ -2803,101 +2710,96 @@ border-radius:5px;
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_25">
                        <item>
-                        <widget class="QComboBox" name="comboBoxAlta"/>
+                        <widget class="QComboBox" name="comboBoxAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="RFCAlta"/>
+                        <widget class="QLineEdit" name="RFCAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="nombreAlta"/>
+                        <widget class="QLineEdit" name="nombreAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="apellidoPAlta"/>
+                        <widget class="QLineEdit" name="apellidoPAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="apellidoMAlta"/>
+                        <widget class="QLineEdit" name="apellidoMAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="serialAlta"/>
+                        <widget class="QLineEdit" name="serialAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="usuarioAlta"/>
+                        <widget class="QLineEdit" name="usuarioAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="contraseAlta"/>
+                        <widget class="QLineEdit" name="contraseAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="cargoAlta"/>
+                        <widget class="QLineEdit" name="cargoAlta">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                        </widget>
                        </item>
                       </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_11">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_33">
-                    <item>
-                     <widget class="QTableWidget" name="TablaUsuarioAlta">
-                      <property name="styleSheet">
-                       <string notr="true">QHeaderView::section{
-color: black;
-font-weight: bold;
-}</string>
-                      </property>
-                      <attribute name="horizontalHeaderCascadingSectionResizes">
-                       <bool>true</bool>
-                      </attribute>
-                      <attribute name="horizontalHeaderDefaultSectionSize">
-                       <number>111</number>
-                      </attribute>
-                      <column>
-                       <property name="text">
-                        <string>RFC</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>NOMBRE</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>APELLIDO PATERNO</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>APELLIDO MATERNO</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>NO.SERIAL</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>USUARIO</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>CONTRASEÑA</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>CARGO</string>
-                       </property>
-                      </column>
                      </widget>
                     </item>
                    </layout>
@@ -2957,6 +2859,9 @@ border: 1px solid black;
                     </item>
                     <item>
                      <widget class="QPushButton" name="BotonEliminarAlta">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">QPushButton{
 color:black;
