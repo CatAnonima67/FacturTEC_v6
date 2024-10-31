@@ -891,7 +891,7 @@ border: 1px solid white;
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>4</number>
+             <number>5</number>
             </property>
             <widget class="QWidget" name="page_Principal">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1204,10 +1204,10 @@ font-family:Arial;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ApellidoPalumno"/>
+                     <widget class="QLineEdit" name="lineEdit_ApellidoMalumno"/>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ApellidoMAlumno">
+                     <widget class="QLineEdit" name="lineEdit_ApellidoPalumno">
                       <property name="maxLength">
                        <number>50</number>
                       </property>
@@ -1251,7 +1251,7 @@ font-family:arial;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_16">
+                     <widget class="QLabel" name="label_CantidadPago">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -2290,7 +2290,7 @@ border-radius: 10px;
                 <property name="maximumSize">
                  <size>
                   <width>1000</width>
-                  <height>600</height>
+                  <height>200</height>
                  </size>
                 </property>
                 <property name="frameShape">
@@ -2300,6 +2300,9 @@ border-radius: 10px;
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QFormLayout" name="formLayout_3">
+                 <property name="rightMargin">
+                  <number>10</number>
+                 </property>
                  <item row="0" column="0">
                   <widget class="QFrame" name="frame_LabelPadre">
                    <property name="styleSheet">
@@ -2369,7 +2372,7 @@ border-radius: 10px;
                   <widget class="QFrame" name="frame_LineEditPadre">
                    <property name="maximumSize">
                     <size>
-                     <width>16777215</width>
+                     <width>900</width>
                      <height>200</height>
                     </size>
                    </property>
@@ -2396,102 +2399,234 @@ border-radius: 10px;
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_NombreAlumno_2">
+                     <widget class="QLineEdit" name="lineEdit_NombrePadre">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
                       <property name="maxLength">
                        <number>50</number>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ApellidoPalumno_2"/>
+                     <widget class="QLineEdit" name="lineEdit_ApellidoPpadre">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                     </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ApellidoMAlumno_2">
+                     <widget class="QLineEdit" name="lineEdit_ApellidoMpadre">
                       <property name="maxLength">
                        <number>50</number>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_CURPalumno_2"/>
+                     <widget class="QLineEdit" name="lineEdit_RFCPadre"/>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ClaveTrabajoAlumno_2"/>
+                     <widget class="QLineEdit" name="lineEdit_CorreoElectronicoPadre"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_19">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel{
-font-size: 20px;
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_15">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+font-size: 15px;
 font-family: arial;
 color:black;
 Font-weight:bold;
+
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>Datos Fiscales</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <layout class="QVBoxLayout" name="verticalLayout_28">
-                   <item>
-                    <widget class="QLineEdit" name="lineEdit"/>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEdit_3"/>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEdit_2"/>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineEdit_4"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="2" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_15">
-                   <item>
-                    <widget class="QLabel" name="label_17">
-                     <property name="text">
-                      <string>Regimen</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label">
-                     <property name="text">
-                      <string>Codigo Postal</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_18">
-                     <property name="text">
-                      <string>Calle</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_20">
-                     <property name="text">
-                      <string>Municipio</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
+                  </property>
+                  <property name="text">
+                   <string>DATOS FISCALES</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_16">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>25</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="label_17">
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Regimen Fiscal :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_Regimen">
+                    <property name="maximumSize">
+                     <size>
+                      <width>900</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+padding: 5px;
+border-radius:5px;
+background-color:rgb(217,217,217);
+color:black;
+font-size:16px;
+font-family:arial;
+}</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <property name="rightMargin">
+                 <number>10</number>
+                </property>
+                <item>
+                 <layout class="QFormLayout" name="formLayout_4">
+                  <property name="horizontalSpacing">
+                   <number>20</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>20</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="lineEdit_Calle"/>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="lineEdit_CodigoPostal">
+                    <property name="minimumSize">
+                     <size>
+                      <width>340</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>Codigo Postal :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>No.Calle :</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QFormLayout" name="formLayout_5">
+                  <property name="horizontalSpacing">
+                   <number>20</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_21">
+                    <property name="text">
+                     <string>Colonia :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="lineEdit_Colonia"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_22">
+                    <property name="text">
+                     <string>Estado :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="lineEdit_Estado"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <property name="spacing">
+                 <number>50</number>
+                </property>
+                <property name="leftMargin">
+                 <number>25</number>
+                </property>
+                <property name="rightMargin">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_20">
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Municipio :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Municipio"/>
+                </item>
+               </layout>
               </item>
               <item>
                <widget class="QFrame" name="frame_18">
@@ -2522,7 +2657,7 @@ border: 1px solid black;
                   <number>9</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="PushBoton_Insertar_Alumno_2">
+                  <widget class="QPushButton" name="PushBoton_Insertar_Padre">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
 color:black;
@@ -2539,7 +2674,7 @@ background-color:rgb(80,150,210);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="PushBoton_Modificar_Alumno_2">
+                  <widget class="QPushButton" name="PushBoton_Modificar_Padre">
                    <property name="styleSheet">
                     <string notr="true">QPushButton{
 color:black;
@@ -2555,7 +2690,7 @@ border: 1px solid black;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="PushBoton_Eliminar_Alumno_2">
+                  <widget class="QPushButton" name="PushBoton_Eliminar_Padre">
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
@@ -2602,6 +2737,12 @@ color:White;
                    <layout class="QHBoxLayout" name="horizontalLayout_34" stretch="20,80">
                     <item>
                      <widget class="QFrame" name="frame_15">
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>1</pointsize>
+                       </font>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">QLabel{
 color:black;
@@ -2614,6 +2755,9 @@ color:black;
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_24">
+                       <property name="spacing">
+                        <number>15</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_6">
                          <property name="maximumSize">
@@ -2621,6 +2765,12 @@ color:black;
                            <width>16777215</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
                          </property>
                          <property name="text">
                           <string>BUSCAR</string>
@@ -2635,6 +2785,12 @@ color:black;
                            <height>35</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>RFC</string>
                          </property>
@@ -2642,6 +2798,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_14">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Nombre</string>
                          </property>
@@ -2649,6 +2811,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_8">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Apellido Paterno</string>
                          </property>
@@ -2656,6 +2824,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_13">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Apellido Materno</string>
                          </property>
@@ -2663,6 +2837,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_12">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>No.Serial</string>
                          </property>
@@ -2670,6 +2850,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_9">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Usuario</string>
                          </property>
@@ -2677,6 +2863,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_11">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Contraseña</string>
                          </property>
@@ -2684,6 +2876,12 @@ color:black;
                        </item>
                        <item>
                         <widget class="QLabel" name="label_10">
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Cargo</string>
                          </property>
@@ -2709,6 +2907,9 @@ border-radius:5px;
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_25">
+                       <property name="spacing">
+                        <number>15</number>
+                       </property>
                        <item>
                         <widget class="QComboBox" name="comboBoxAlta">
                          <property name="maximumSize">
@@ -2727,6 +2928,12 @@ border-radius:5px;
                            <height>35</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2736,6 +2943,12 @@ border-radius:5px;
                            <width>16777215</width>
                            <height>35</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
                          </property>
                         </widget>
                        </item>
@@ -2747,6 +2960,12 @@ border-radius:5px;
                            <height>35</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2756,6 +2975,12 @@ border-radius:5px;
                            <width>16777215</width>
                            <height>35</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
                          </property>
                         </widget>
                        </item>
@@ -2767,6 +2992,12 @@ border-radius:5px;
                            <height>35</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2776,6 +3007,12 @@ border-radius:5px;
                            <width>16777215</width>
                            <height>35</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
                          </property>
                         </widget>
                        </item>
@@ -2787,6 +3024,12 @@ border-radius:5px;
                            <height>35</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -2796,6 +3039,12 @@ border-radius:5px;
                            <width>16777215</width>
                            <height>35</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Arial</family>
+                           <pointsize>12</pointsize>
+                          </font>
                          </property>
                         </widget>
                        </item>

@@ -63,8 +63,9 @@ class Menu(QMainWindow):
         self.ui.lineEdit_CURPalumno.setMaxLength(18)
         self.ui.lineEdit_RFCtutorAlumno.setMaxLength(12)
 
-        self.ui.pushButton_GuardarAlumno.clicked.connect(self.guardar_datos_alumno)
-        self.ui.pushButton_GuardarPadre.clicked.connect(self.guardar_datos_padre)
+        self.ui.PushBoton_Insertar_Alumno.clicked.connect(self.guardar_datos_alumno)
+        self.ui.PushBoton_Insertar_Padre.clicked.connect(self.guardar_datos_padre)
+
          # Conectar el botón a la función que abre el PDF
         self.ui.pushButton_2.clicked.connect(self.open_pdf)
 
@@ -84,19 +85,11 @@ class Menu(QMainWindow):
         
 
     def cerrarSesion(self):
+        # Mensaje de salida
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Icon.Warning)
         msg_box.setWindowTitle("Confirmar Cierre de Sesión")
         msg_box.setText("¿Estás seguro de que deseas cerrar sesión?")
-
-        # msg_box = QMessageBox(self)
-        # msg_box.setIcon(QMessageBox.Icon.Warning) 
-        # msg_box.setWindowTitle('Confirmar Cierre de Sesión')
-        # msg_box.setText("¿Estás seguro de que deseas cerrar sesión?")
-        # msg_box.exec()
-       # msg_box.setIcon(QMessageBox.Icon.Question)
-
-        # Agregar botones claramente
         msg_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         
         # Cambiar texto de los botones (opcional)
