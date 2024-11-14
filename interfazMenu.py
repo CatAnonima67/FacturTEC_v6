@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1203, 858)
+        MainWindow.resize(1070, 1024)
         MainWindow.setMinimumSize(QtCore.QSize(50, 0))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
@@ -77,13 +77,143 @@ class Ui_MainWindow(object):
 "padding: 2px 5px;\n"
 "}\n"
 "\n"
+"QComboBox {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"        border: 1px solid #c0c0c0;\n"
+"    }\n"
+"    \n"
+"    \n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: white;\n"
+"        color: black;\n"
+"        selection-background-color: #0078d7;\n"
+"        selection-color: white;\n"
+"        border: 1px solid #c0c0c0;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: #e5f3ff;\n"
+"        color: black;\n"
+"    }\n"
+"\n"
 "\n"
 "")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.centralwidget.setPalette(palette)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.contenedorBarraLateral = QtWidgets.QWidget(parent=self.centralwidget)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.contenedorBarraLateral.setPalette(palette)
         self.contenedorBarraLateral.setStyleSheet("")
         self.contenedorBarraLateral.setObjectName("contenedorBarraLateral")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.contenedorBarraLateral)
@@ -91,6 +221,71 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.subcontenedorBarraLateral = QtWidgets.QWidget(parent=self.contenedorBarraLateral)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(214, 210, 218))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.subcontenedorBarraLateral.setPalette(palette)
         self.subcontenedorBarraLateral.setStyleSheet("QPushButton{\n"
 "font-family: Arial;        \n"
 "font-size: 14px;          \n"
@@ -113,7 +308,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.frame_superiorBarraLateral.sizePolicy().hasHeightForWidth())
         self.frame_superiorBarraLateral.setSizePolicy(sizePolicy)
         self.frame_superiorBarraLateral.setStyleSheet("QFrame{\n"
-"background-color: rgb(21,10,89);\n"
+"background-color:rgb(60,50,120);\n"
 "border-radius:5px\n"
 "}\n"
 "")
@@ -211,6 +406,44 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_opcionesPrincipales.sizePolicy().hasHeightForWidth())
         self.frame_opcionesPrincipales.setSizePolicy(sizePolicy)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.frame_opcionesPrincipales.setPalette(palette)
         self.frame_opcionesPrincipales.setStyleSheet("\n"
 "QPushButton{\n"
 "background-color: transparent;\n"
@@ -296,6 +529,44 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.pushButton_Bitacora)
         self.verticalLayout_2.addWidget(self.frame_opcionesPrincipales)
         self.frame_inferiorBarraLateral = QtWidgets.QFrame(parent=self.subcontenedorBarraLateral)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.frame_inferiorBarraLateral.setPalette(palette)
         self.frame_inferiorBarraLateral.setStyleSheet("QPushButton{\n"
 "border-radius:20px;\n"
 "padding: 3px;\n"
@@ -318,6 +589,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "border: 1px solid black;\n"
 "background-color:rgb(80,150,210);\n"
+"color:white;\n"
 "}\n"
 "\n"
 "")
@@ -329,7 +601,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.pushButton_Respaldo)
         self.pushButton_Cerrarsesion = QtWidgets.QPushButton(parent=self.frame_inferiorBarraLateral)
         self.pushButton_Cerrarsesion.setStyleSheet("QPushButton{\n"
-"background-color:rgb(21,10,89);\n"
+"background-color:rgb(60,50,120);\n"
 "color: white;\n"
 "}\n"
 "QPushButton:hover{\n"
@@ -415,6 +687,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.frame_Principal)
+        self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_Principal = QtWidgets.QWidget()
         self.page_Principal.setObjectName("page_Principal")
@@ -460,6 +733,21 @@ class Ui_MainWindow(object):
 "font-size:16px;\n"
 "font-family:Arial;\n"
 "}\n"
+"\n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: rgb(70,60,130);\n"
+"        color: white;\n"
+"    }\n"
 "")
         self.page_Alumno.setObjectName("page_Alumno")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.page_Alumno)
@@ -486,8 +774,88 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.pushButton_LupaBuscarAlumno)
         self.comboBox_BuscarAlumno = QtWidgets.QComboBox(parent=self.frame_SuperiorAlumno)
         self.comboBox_BuscarAlumno.setMaximumSize(QtCore.QSize(800, 16777215))
-        self.comboBox_BuscarAlumno.setStyleSheet("")
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.comboBox_BuscarAlumno.setPalette(palette)
+        self.comboBox_BuscarAlumno.setStyleSheet("  \n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: rgb(70,60,130);\n"
+"        color: white;\n"
+"    }")
         self.comboBox_BuscarAlumno.setEditable(True)
+        self.comboBox_BuscarAlumno.setMaxVisibleItems(20)
         self.comboBox_BuscarAlumno.setObjectName("comboBox_BuscarAlumno")
         self.horizontalLayout_9.addWidget(self.comboBox_BuscarAlumno)
         self.verticalLayout_9.addWidget(self.frame_SuperiorAlumno, 0, QtCore.Qt.AlignmentFlag.AlignVCenter)
@@ -515,12 +883,12 @@ class Ui_MainWindow(object):
         self.label_NombreAlumno = QtWidgets.QLabel(parent=self.frame_LabelAlumno)
         self.label_NombreAlumno.setObjectName("label_NombreAlumno")
         self.verticalLayout_10.addWidget(self.label_NombreAlumno)
-        self.label_2 = QtWidgets.QLabel(parent=self.frame_LabelAlumno)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_10.addWidget(self.label_2)
         self.label_ApellidosAlumno = QtWidgets.QLabel(parent=self.frame_LabelAlumno)
         self.label_ApellidosAlumno.setObjectName("label_ApellidosAlumno")
         self.verticalLayout_10.addWidget(self.label_ApellidosAlumno)
+        self.label_2 = QtWidgets.QLabel(parent=self.frame_LabelAlumno)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_10.addWidget(self.label_2)
         self.label_5 = QtWidgets.QLabel(parent=self.frame_LabelAlumno)
         self.label_5.setObjectName("label_5")
         self.verticalLayout_10.addWidget(self.label_5)
@@ -552,25 +920,164 @@ class Ui_MainWindow(object):
         self.lineEdit_NombreAlumno.setMaxLength(50)
         self.lineEdit_NombreAlumno.setObjectName("lineEdit_NombreAlumno")
         self.verticalLayout_11.addWidget(self.lineEdit_NombreAlumno)
-        self.lineEdit_ApellidoMalumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
-        self.lineEdit_ApellidoMalumno.setObjectName("lineEdit_ApellidoMalumno")
-        self.verticalLayout_11.addWidget(self.lineEdit_ApellidoMalumno)
         self.lineEdit_ApellidoPalumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
         self.lineEdit_ApellidoPalumno.setMaxLength(50)
         self.lineEdit_ApellidoPalumno.setObjectName("lineEdit_ApellidoPalumno")
         self.verticalLayout_11.addWidget(self.lineEdit_ApellidoPalumno)
-        self.lineEdit_Fecha_Nacimiento = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
-        self.lineEdit_Fecha_Nacimiento.setStyleSheet("QLineEdit{\n"
-"font-size: 15px;\n"
+        self.lineEdit_ApellidoMalumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
+        self.lineEdit_ApellidoMalumno.setMaxLength(50)
+        self.lineEdit_ApellidoMalumno.setObjectName("lineEdit_ApellidoMalumno")
+        self.verticalLayout_11.addWidget(self.lineEdit_ApellidoMalumno)
+        self.dateEdit = QtWidgets.QDateEdit(parent=self.frame_LineEditAlumno)
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Active, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Inactive, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(217, 217, 217))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(51, 51, 51, 128))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.PlaceholderText, brush)
+        self.dateEdit.setPalette(palette)
+        self.dateEdit.setStyleSheet("QDateEdit {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: #333333;\n"
+"        border: 1px solid #c0c0c0;\n"
+"        border-radius: 5px;\n"
+"        padding: 5px;\n"
+"        min-width: 110px;\n"
+"font-size: 16px;\n"
 "font-family: arial;\n"
-"color:rgb(75,145,210)\n"
-"}")
-        self.lineEdit_Fecha_Nacimiento.setObjectName("lineEdit_Fecha_Nacimiento")
-        self.verticalLayout_11.addWidget(self.lineEdit_Fecha_Nacimiento)
+"    }\n"
+"\n"
+"    QDateEdit::drop-down {\n"
+"        border: none;\n"
+"        width: 20px;\n"
+"    }\n"
+"\n"
+" \n"
+"\n"
+"   \n"
+"    QCalendarWidget QWidget {\n"
+"        alternate-background-color: #f0f0f0;\n"
+"color: black;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QToolButton {\n"
+"        height: 30px;\n"
+"        color: black;\n"
+"        background-color: white;\n"
+"        border: none;\n"
+"        border-radius: 4px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QToolButton:hover {\n"
+"        background-color: #e5f3ff;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QSpinBox {\n"
+"        height: 25px;\n"
+"        width: 60px;\n"
+"        color: black;\n"
+"        background-color: white;\n"
+"        selection-background-color: #0078d7;\n"
+"        selection-color: white;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView {\n"
+"        background-color: white;\n"
+"        selection-background-color: #0078d7;\n"
+"        selection-color: white;\n"
+"        outline: none;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView::item:hover {\n"
+"        background-color: #e5f3ff;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView::item:selected {\n"
+"        background-color: #0078d7;\n"
+"        color: white;\n"
+"    }\n"
+"    \n"
+"    QCalendarWidget QMenu {\n"
+"        background-color: white;\n"
+"        border: 1px solid #c0c0c0;\n"
+"}\n"
+"")
+        self.dateEdit.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.NoButtons)
+        self.dateEdit.setSpecialValueText("")
+        self.dateEdit.setAccelerated(False)
+        self.dateEdit.setMaximumDateTime(QtCore.QDateTime(QtCore.QDate(2025, 1, 2), QtCore.QTime(23, 59, 59)))
+        self.dateEdit.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(2006, 1, 1), QtCore.QTime(6, 0, 0)))
+        self.dateEdit.setMinimumDate(QtCore.QDate(2006, 1, 1))
+        self.dateEdit.setCurrentSection(QtWidgets.QDateTimeEdit.Section.DaySection)
+        self.dateEdit.setCalendarPopup(True)
+        self.dateEdit.setDate(QtCore.QDate(2006, 1, 1))
+        self.dateEdit.setObjectName("dateEdit")
+        self.verticalLayout_11.addWidget(self.dateEdit)
         self.lineEdit_CURPalumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
+        self.lineEdit_CURPalumno.setMaxLength(18)
         self.lineEdit_CURPalumno.setObjectName("lineEdit_CURPalumno")
         self.verticalLayout_11.addWidget(self.lineEdit_CURPalumno)
         self.lineEdit_ClaveTrabajoAlumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
+        self.lineEdit_ClaveTrabajoAlumno.setMaxLength(10)
         self.lineEdit_ClaveTrabajoAlumno.setObjectName("lineEdit_ClaveTrabajoAlumno")
         self.verticalLayout_11.addWidget(self.lineEdit_ClaveTrabajoAlumno)
         self.comboBox_NivelEducativo = QtWidgets.QComboBox(parent=self.frame_LineEditAlumno)
@@ -596,6 +1103,7 @@ class Ui_MainWindow(object):
         self.label_CantidadPago.setObjectName("label_CantidadPago")
         self.verticalLayout_11.addWidget(self.label_CantidadPago)
         self.lineEdit_RFCtutorAlumno = QtWidgets.QLineEdit(parent=self.frame_LineEditAlumno)
+        self.lineEdit_RFCtutorAlumno.setMaxLength(13)
         self.lineEdit_RFCtutorAlumno.setObjectName("lineEdit_RFCtutorAlumno")
         self.verticalLayout_11.addWidget(self.lineEdit_RFCtutorAlumno)
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.frame_LineEditAlumno)
@@ -783,218 +1291,324 @@ class Ui_MainWindow(object):
 "padding:5px;\n"
 "font-size:16px;\n"
 "font-family:Arial;\n"
-"}")
+"}\n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: rgb(70,60,130);\n"
+"        color: white;\n"
+"    }")
         self.page_Factura.setObjectName("page_Factura")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.page_Factura)
         self.verticalLayout_17.setObjectName("verticalLayout_17")
-        self.frame_SeleccionarPadre = QtWidgets.QFrame(parent=self.page_Factura)
-        self.frame_SeleccionarPadre.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_SeleccionarPadre.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_SeleccionarPadre.setObjectName("frame_SeleccionarPadre")
-        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.frame_SeleccionarPadre)
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.page_Factura)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
+        self.scrollArea.setSizePolicy(sizePolicy)
+        self.scrollArea.setMinimumSize(QtCore.QSize(0, 850))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 804, 1247))
+        self.scrollAreaWidgetContents.setStyleSheet("QTextEdit{\n"
+"border-radius: 5px ;\n"
+"background-color: rgb(217,217,217);\n"
+"color:black;\n"
+"}\n"
+"QComboBox{\n"
+"color:black;\n"
+"}\n"
+"QWidget{\n"
+"font-size:16px;\n"
+"font-family:Arial;\n"
+"}\n"
+"")
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_18.setSpacing(5)
         self.verticalLayout_18.setObjectName("verticalLayout_18")
-        self.frame_SeleccionPadre = QtWidgets.QFrame(parent=self.frame_SeleccionarPadre)
-        self.frame_SeleccionPadre.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.frame_SeleccionPadre.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_SeleccionPadre.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_SeleccionPadre.setObjectName("frame_SeleccionPadre")
-        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.frame_SeleccionPadre)
-        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_14.setSpacing(10)
-        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.pushButton_lupaSeleccionarPadre = QtWidgets.QPushButton(parent=self.frame_SeleccionPadre)
-        self.pushButton_lupaSeleccionarPadre.setText("")
-        self.pushButton_lupaSeleccionarPadre.setIcon(icon7)
-        self.pushButton_lupaSeleccionarPadre.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_lupaSeleccionarPadre.setObjectName("pushButton_lupaSeleccionarPadre")
-        self.horizontalLayout_14.addWidget(self.pushButton_lupaSeleccionarPadre)
-        self.comboBox_SeleccionarPadre = QtWidgets.QComboBox(parent=self.frame_SeleccionPadre)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboBox_SeleccionarPadre.sizePolicy().hasHeightForWidth())
-        self.comboBox_SeleccionarPadre.setSizePolicy(sizePolicy)
+        self.widget_2 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_2.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_2.setObjectName("widget_2")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.widget_2)
+        self.horizontalLayout_8.setContentsMargins(5, 0, 5, 0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.label_16 = QtWidgets.QLabel(parent=self.widget_2)
+        self.label_16.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.label_16.setObjectName("label_16")
+        self.horizontalLayout_8.addWidget(self.label_16)
+        self.comboBox_SeleccionarPadre = QtWidgets.QComboBox(parent=self.widget_2)
         self.comboBox_SeleccionarPadre.setEditable(True)
-        self.comboBox_SeleccionarPadre.setInsertPolicy(QtWidgets.QComboBox.InsertPolicy.InsertAtBottom)
+        self.comboBox_SeleccionarPadre.setPlaceholderText("")
         self.comboBox_SeleccionarPadre.setObjectName("comboBox_SeleccionarPadre")
-        self.horizontalLayout_14.addWidget(self.comboBox_SeleccionarPadre)
-        self.verticalLayout_18.addWidget(self.frame_SeleccionPadre)
-        self.frame_DatosFiscalesPadreFactura = QtWidgets.QFrame(parent=self.frame_SeleccionarPadre)
-        self.frame_DatosFiscalesPadreFactura.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_DatosFiscalesPadreFactura.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_DatosFiscalesPadreFactura.setObjectName("frame_DatosFiscalesPadreFactura")
-        self.horizontalLayout_19 = QtWidgets.QHBoxLayout(self.frame_DatosFiscalesPadreFactura)
-        self.horizontalLayout_19.setObjectName("horizontalLayout_19")
-        self.label_RFCReceptor = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura)
-        self.label_RFCReceptor.setObjectName("label_RFCReceptor")
-        self.horizontalLayout_19.addWidget(self.label_RFCReceptor)
-        self.lineEdit_RFCReceptor = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura)
-        self.lineEdit_RFCReceptor.setReadOnly(True)
-        self.lineEdit_RFCReceptor.setObjectName("lineEdit_RFCReceptor")
-        self.horizontalLayout_19.addWidget(self.lineEdit_RFCReceptor)
-        self.label_NombreReceptor = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura)
-        self.label_NombreReceptor.setObjectName("label_NombreReceptor")
-        self.horizontalLayout_19.addWidget(self.label_NombreReceptor)
-        self.lineEdit_NombreReceptor = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura)
-        self.lineEdit_NombreReceptor.setReadOnly(True)
-        self.lineEdit_NombreReceptor.setObjectName("lineEdit_NombreReceptor")
-        self.horizontalLayout_19.addWidget(self.lineEdit_NombreReceptor)
-        self.label_ApellidosReceptor = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura)
-        self.label_ApellidosReceptor.setObjectName("label_ApellidosReceptor")
-        self.horizontalLayout_19.addWidget(self.label_ApellidosReceptor)
-        self.lineEdit_ApellidosReceptor = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura)
-        self.lineEdit_ApellidosReceptor.setReadOnly(True)
-        self.lineEdit_ApellidosReceptor.setObjectName("lineEdit_ApellidosReceptor")
-        self.horizontalLayout_19.addWidget(self.lineEdit_ApellidosReceptor)
-        self.label__DomicilioFiscal = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura)
-        self.label__DomicilioFiscal.setObjectName("label__DomicilioFiscal")
-        self.horizontalLayout_19.addWidget(self.label__DomicilioFiscal)
-        self.lineEdit_DomicilioFiscal = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura)
-        self.lineEdit_DomicilioFiscal.setReadOnly(True)
-        self.lineEdit_DomicilioFiscal.setObjectName("lineEdit_DomicilioFiscal")
-        self.horizontalLayout_19.addWidget(self.lineEdit_DomicilioFiscal)
-        self.label_RegimenFiscal = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura)
-        self.label_RegimenFiscal.setObjectName("label_RegimenFiscal")
-        self.horizontalLayout_19.addWidget(self.label_RegimenFiscal)
-        self.lineEdit_RegimenFiscal = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura)
-        self.lineEdit_RegimenFiscal.setReadOnly(True)
-        self.lineEdit_RegimenFiscal.setObjectName("lineEdit_RegimenFiscal")
-        self.horizontalLayout_19.addWidget(self.lineEdit_RegimenFiscal)
-        self.verticalLayout_18.addWidget(self.frame_DatosFiscalesPadreFactura)
-        self.frame_DatosFiscalesPadreFactura_2 = QtWidgets.QFrame(parent=self.frame_SeleccionarPadre)
-        self.frame_DatosFiscalesPadreFactura_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_DatosFiscalesPadreFactura_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_DatosFiscalesPadreFactura_2.setObjectName("frame_DatosFiscalesPadreFactura_2")
-        self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.frame_DatosFiscalesPadreFactura_2)
-        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
-        self.label_UsoCFDI = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.label_UsoCFDI.setObjectName("label_UsoCFDI")
-        self.horizontalLayout_20.addWidget(self.label_UsoCFDI)
-        self.comboBox_UsoCFDI = QtWidgets.QComboBox(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.comboBox_UsoCFDI.setObjectName("comboBox_UsoCFDI")
-        self.horizontalLayout_20.addWidget(self.comboBox_UsoCFDI)
-        self.label_Moneda = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.label_Moneda.setObjectName("label_Moneda")
-        self.horizontalLayout_20.addWidget(self.label_Moneda)
-        self.lineEdit_Moneda = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.lineEdit_Moneda.setObjectName("lineEdit_Moneda")
-        self.horizontalLayout_20.addWidget(self.lineEdit_Moneda)
-        self.label_FormaPago = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.label_FormaPago.setObjectName("label_FormaPago")
-        self.horizontalLayout_20.addWidget(self.label_FormaPago)
-        self.lineEdit_FormaPago = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.lineEdit_FormaPago.setObjectName("lineEdit_FormaPago")
-        self.horizontalLayout_20.addWidget(self.lineEdit_FormaPago)
-        self.label_MetodoPago = QtWidgets.QLabel(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.label_MetodoPago.setObjectName("label_MetodoPago")
-        self.horizontalLayout_20.addWidget(self.label_MetodoPago)
-        self.lineEdit_MetodoPago = QtWidgets.QLineEdit(parent=self.frame_DatosFiscalesPadreFactura_2)
-        self.lineEdit_MetodoPago.setObjectName("lineEdit_MetodoPago")
-        self.horizontalLayout_20.addWidget(self.lineEdit_MetodoPago)
-        self.verticalLayout_18.addWidget(self.frame_DatosFiscalesPadreFactura_2)
-        self.verticalLayout_17.addWidget(self.frame_SeleccionarPadre)
-        self.frame_SeleccionarAlumno = QtWidgets.QFrame(parent=self.page_Factura)
-        self.frame_SeleccionarAlumno.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_SeleccionarAlumno.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_SeleccionarAlumno.setObjectName("frame_SeleccionarAlumno")
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.frame_SeleccionarAlumno)
+        self.horizontalLayout_8.addWidget(self.comboBox_SeleccionarPadre)
+        self.verticalLayout_18.addWidget(self.widget_2)
+        self.widget_11 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_11.setMinimumSize(QtCore.QSize(0, 400))
+        self.widget_11.setObjectName("widget_11")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.widget_11)
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        self.widget_12 = QtWidgets.QWidget(parent=self.widget_11)
+        self.widget_12.setObjectName("widget_12")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.widget_12)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
-        self.frame_SeleccionAlumno = QtWidgets.QFrame(parent=self.frame_SeleccionarAlumno)
-        self.frame_SeleccionAlumno.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.frame_SeleccionAlumno.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_SeleccionAlumno.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_SeleccionAlumno.setObjectName("frame_SeleccionAlumno")
-        self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.frame_SeleccionAlumno)
-        self.horizontalLayout_21.setContentsMargins(0, 0, 0, -1)
-        self.horizontalLayout_21.setSpacing(10)
-        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
-        self.pushButton_lupaSeleccionarAlumno = QtWidgets.QPushButton(parent=self.frame_SeleccionAlumno)
-        self.pushButton_lupaSeleccionarAlumno.setText("")
-        self.pushButton_lupaSeleccionarAlumno.setIcon(icon7)
-        self.pushButton_lupaSeleccionarAlumno.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton_lupaSeleccionarAlumno.setObjectName("pushButton_lupaSeleccionarAlumno")
-        self.horizontalLayout_21.addWidget(self.pushButton_lupaSeleccionarAlumno)
-        self.comboBox_SeleccionarAlumno = QtWidgets.QComboBox(parent=self.frame_SeleccionAlumno)
+        self.label_28 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_28.setObjectName("label_28")
+        self.verticalLayout_19.addWidget(self.label_28)
+        self.label_27 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_27.setObjectName("label_27")
+        self.verticalLayout_19.addWidget(self.label_27)
+        self.label_26 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_26.setObjectName("label_26")
+        self.verticalLayout_19.addWidget(self.label_26)
+        self.label_23 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_23.setObjectName("label_23")
+        self.verticalLayout_19.addWidget(self.label_23)
+        self.label_25 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_25.setObjectName("label_25")
+        self.verticalLayout_19.addWidget(self.label_25)
+        self.label_24 = QtWidgets.QLabel(parent=self.widget_12)
+        self.label_24.setObjectName("label_24")
+        self.verticalLayout_19.addWidget(self.label_24)
+        self.horizontalLayout_13.addWidget(self.widget_12)
+        self.widget_13 = QtWidgets.QWidget(parent=self.widget_11)
+        self.widget_13.setObjectName("widget_13")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.widget_13)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.lineEdit_NombrePadreFact = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_NombrePadreFact.setReadOnly(True)
+        self.lineEdit_NombrePadreFact.setObjectName("lineEdit_NombrePadreFact")
+        self.verticalLayout_26.addWidget(self.lineEdit_NombrePadreFact)
+        self.lineEdit_ApellidoPpadreFact = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_ApellidoPpadreFact.setReadOnly(True)
+        self.lineEdit_ApellidoPpadreFact.setObjectName("lineEdit_ApellidoPpadreFact")
+        self.verticalLayout_26.addWidget(self.lineEdit_ApellidoPpadreFact)
+        self.lineEdit_ApellidoMpadreFact = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_ApellidoMpadreFact.setReadOnly(True)
+        self.lineEdit_ApellidoMpadreFact.setObjectName("lineEdit_ApellidoMpadreFact")
+        self.verticalLayout_26.addWidget(self.lineEdit_ApellidoMpadreFact)
+        self.lineEdit_RFCpadreFactura = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_RFCpadreFactura.setReadOnly(True)
+        self.lineEdit_RFCpadreFactura.setObjectName("lineEdit_RFCpadreFactura")
+        self.verticalLayout_26.addWidget(self.lineEdit_RFCpadreFactura)
+        self.lineEdit_DomicilioFiscalFact = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_DomicilioFiscalFact.setReadOnly(True)
+        self.lineEdit_DomicilioFiscalFact.setObjectName("lineEdit_DomicilioFiscalFact")
+        self.verticalLayout_26.addWidget(self.lineEdit_DomicilioFiscalFact)
+        self.lineEdit_RegimenFiscalFact = QtWidgets.QLineEdit(parent=self.widget_13)
+        self.lineEdit_RegimenFiscalFact.setReadOnly(True)
+        self.lineEdit_RegimenFiscalFact.setObjectName("lineEdit_RegimenFiscalFact")
+        self.verticalLayout_26.addWidget(self.lineEdit_RegimenFiscalFact)
+        self.horizontalLayout_13.addWidget(self.widget_13)
+        self.verticalLayout_18.addWidget(self.widget_11)
+        self.widget_10 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_10.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_10.setObjectName("widget_10")
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.widget_10)
+        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_14.setSpacing(5)
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+        self.widget_15 = QtWidgets.QWidget(parent=self.widget_10)
+        self.widget_15.setObjectName("widget_15")
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.widget_15)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        self.label_29 = QtWidgets.QLabel(parent=self.widget_15)
+        self.label_29.setMaximumSize(QtCore.QSize(75, 16777215))
+        self.label_29.setObjectName("label_29")
+        self.horizontalLayout_15.addWidget(self.label_29)
+        self.comboBox_CFDI = QtWidgets.QComboBox(parent=self.widget_15)
+        self.comboBox_CFDI.setObjectName("comboBox_CFDI")
+        self.horizontalLayout_15.addWidget(self.comboBox_CFDI)
+        self.horizontalLayout_14.addWidget(self.widget_15)
+        self.widget_16 = QtWidgets.QWidget(parent=self.widget_10)
+        self.widget_16.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_16.setObjectName("widget_16")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.widget_16)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        self.label_30 = QtWidgets.QLabel(parent=self.widget_16)
+        self.label_30.setMaximumSize(QtCore.QSize(120, 16777215))
+        self.label_30.setObjectName("label_30")
+        self.horizontalLayout_16.addWidget(self.label_30)
+        self.comboBox_FormaPago = QtWidgets.QComboBox(parent=self.widget_16)
+        self.comboBox_FormaPago.setObjectName("comboBox_FormaPago")
+        self.horizontalLayout_16.addWidget(self.comboBox_FormaPago)
+        self.horizontalLayout_14.addWidget(self.widget_16)
+        self.verticalLayout_18.addWidget(self.widget_10)
+        self.widget_3 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_3.setObjectName("widget_3")
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout(self.widget_3)
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.widget_17 = QtWidgets.QWidget(parent=self.widget_3)
+        self.widget_17.setObjectName("widget_17")
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.widget_17)
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+        self.label_31 = QtWidgets.QLabel(parent=self.widget_17)
+        self.label_31.setMaximumSize(QtCore.QSize(70, 16777215))
+        self.label_31.setObjectName("label_31")
+        self.horizontalLayout_18.addWidget(self.label_31)
+        self.comboBox_Moneda = QtWidgets.QComboBox(parent=self.widget_17)
+        self.comboBox_Moneda.setObjectName("comboBox_Moneda")
+        self.horizontalLayout_18.addWidget(self.comboBox_Moneda)
+        self.horizontalLayout_17.addWidget(self.widget_17)
+        self.widget_18 = QtWidgets.QWidget(parent=self.widget_3)
+        self.widget_18.setObjectName("widget_18")
+        self.horizontalLayout_19 = QtWidgets.QHBoxLayout(self.widget_18)
+        self.horizontalLayout_19.setObjectName("horizontalLayout_19")
+        self.label_32 = QtWidgets.QLabel(parent=self.widget_18)
+        self.label_32.setMaximumSize(QtCore.QSize(125, 16777215))
+        self.label_32.setObjectName("label_32")
+        self.horizontalLayout_19.addWidget(self.label_32)
+        self.comboBox_MetodoPago = QtWidgets.QComboBox(parent=self.widget_18)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboBox_SeleccionarAlumno.sizePolicy().hasHeightForWidth())
-        self.comboBox_SeleccionarAlumno.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.comboBox_MetodoPago.sizePolicy().hasHeightForWidth())
+        self.comboBox_MetodoPago.setSizePolicy(sizePolicy)
+        self.comboBox_MetodoPago.setObjectName("comboBox_MetodoPago")
+        self.horizontalLayout_19.addWidget(self.comboBox_MetodoPago)
+        self.horizontalLayout_17.addWidget(self.widget_18)
+        self.verticalLayout_18.addWidget(self.widget_3)
+        self.widget_8 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_8.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_8.setObjectName("widget_8")
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.widget_8)
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.label_33 = QtWidgets.QLabel(parent=self.widget_8)
+        self.label_33.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.label_33.setObjectName("label_33")
+        self.horizontalLayout_20.addWidget(self.label_33)
+        self.comboBox_SeleccionarAlumno = QtWidgets.QComboBox(parent=self.widget_8)
         self.comboBox_SeleccionarAlumno.setEditable(True)
         self.comboBox_SeleccionarAlumno.setObjectName("comboBox_SeleccionarAlumno")
-        self.horizontalLayout_21.addWidget(self.comboBox_SeleccionarAlumno)
-        self.verticalLayout_19.addWidget(self.frame_SeleccionAlumno)
-        self.frame_DatosFactura = QtWidgets.QFrame(parent=self.frame_SeleccionarAlumno)
-        self.frame_DatosFactura.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_DatosFactura.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_DatosFactura.setObjectName("frame_DatosFactura")
-        self.horizontalLayout_22 = QtWidgets.QHBoxLayout(self.frame_DatosFactura)
+        self.horizontalLayout_20.addWidget(self.comboBox_SeleccionarAlumno)
+        self.verticalLayout_18.addWidget(self.widget_8)
+        self.widget_4 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_4.setMinimumSize(QtCore.QSize(0, 200))
+        self.widget_4.setObjectName("widget_4")
+        self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.widget_4)
+        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
+        self.widget_19 = QtWidgets.QWidget(parent=self.widget_4)
+        self.widget_19.setObjectName("widget_19")
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.widget_19)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        self.widget_22 = QtWidgets.QWidget(parent=self.widget_19)
+        self.widget_22.setObjectName("widget_22")
+        self.horizontalLayout_22 = QtWidgets.QHBoxLayout(self.widget_22)
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
-        self.label_ObjetoImpuesto = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_ObjetoImpuesto.setObjectName("label_ObjetoImpuesto")
-        self.horizontalLayout_22.addWidget(self.label_ObjetoImpuesto)
-        self.comboBox_ObjetoImpuesto = QtWidgets.QComboBox(parent=self.frame_DatosFactura)
-        self.comboBox_ObjetoImpuesto.setEditable(False)
-        self.comboBox_ObjetoImpuesto.setObjectName("comboBox_ObjetoImpuesto")
-        self.horizontalLayout_22.addWidget(self.comboBox_ObjetoImpuesto)
-        self.label_ExcentoIVA = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_ExcentoIVA.setObjectName("label_ExcentoIVA")
-        self.horizontalLayout_22.addWidget(self.label_ExcentoIVA)
-        self.lineEdit_ExcentoIVA = QtWidgets.QLineEdit(parent=self.frame_DatosFactura)
-        self.lineEdit_ExcentoIVA.setObjectName("lineEdit_ExcentoIVA")
-        self.horizontalLayout_22.addWidget(self.lineEdit_ExcentoIVA)
-        self.label_Cantidad = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_Cantidad.setObjectName("label_Cantidad")
-        self.horizontalLayout_22.addWidget(self.label_Cantidad)
-        self.lineEdit_Cantidad = QtWidgets.QLineEdit(parent=self.frame_DatosFactura)
-        self.lineEdit_Cantidad.setObjectName("lineEdit_Cantidad")
-        self.horizontalLayout_22.addWidget(self.lineEdit_Cantidad)
-        self.label_Unidad = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_Unidad.setObjectName("label_Unidad")
-        self.horizontalLayout_22.addWidget(self.label_Unidad)
-        self.lineEdit_Unidad = QtWidgets.QLineEdit(parent=self.frame_DatosFactura)
-        self.lineEdit_Unidad.setObjectName("lineEdit_Unidad")
-        self.horizontalLayout_22.addWidget(self.lineEdit_Unidad)
-        self.label_Descripcion = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_Descripcion.setObjectName("label_Descripcion")
-        self.horizontalLayout_22.addWidget(self.label_Descripcion)
-        self.lineEdit_Descripcion = QtWidgets.QLineEdit(parent=self.frame_DatosFactura)
-        self.lineEdit_Descripcion.setObjectName("lineEdit_Descripcion")
-        self.horizontalLayout_22.addWidget(self.lineEdit_Descripcion)
-        self.label_Precio = QtWidgets.QLabel(parent=self.frame_DatosFactura)
-        self.label_Precio.setObjectName("label_Precio")
-        self.horizontalLayout_22.addWidget(self.label_Precio)
-        self.lineEdit_Precio = QtWidgets.QLineEdit(parent=self.frame_DatosFactura)
-        self.lineEdit_Precio.setObjectName("lineEdit_Precio")
-        self.horizontalLayout_22.addWidget(self.lineEdit_Precio)
-        self.verticalLayout_19.addWidget(self.frame_DatosFactura)
-        self.frame_TablaDatosFactura = QtWidgets.QFrame(parent=self.frame_SeleccionarAlumno)
-        self.frame_TablaDatosFactura.setStyleSheet("")
-        self.frame_TablaDatosFactura.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_TablaDatosFactura.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_TablaDatosFactura.setObjectName("frame_TablaDatosFactura")
-        self.horizontalLayout_TablaDatosFactura = QtWidgets.QHBoxLayout(self.frame_TablaDatosFactura)
-        self.horizontalLayout_TablaDatosFactura.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout_TablaDatosFactura.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_TablaDatosFactura.setSpacing(0)
-        self.horizontalLayout_TablaDatosFactura.setObjectName("horizontalLayout_TablaDatosFactura")
-        self.tableWidget_DatosFactura = QtWidgets.QTableWidget(parent=self.frame_TablaDatosFactura)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tableWidget_DatosFactura.sizePolicy().hasHeightForWidth())
-        self.tableWidget_DatosFactura.setSizePolicy(sizePolicy)
-        self.tableWidget_DatosFactura.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("arial")
-        font.setPointSize(-1)
-        font.setBold(False)
-        font.setUnderline(False)
-        self.tableWidget_DatosFactura.setFont(font)
-        self.tableWidget_DatosFactura.setStyleSheet("QTableWidget{\n"
+        self.label_34 = QtWidgets.QLabel(parent=self.widget_22)
+        self.label_34.setObjectName("label_34")
+        self.horizontalLayout_22.addWidget(self.label_34)
+        self.lineEdit_NombreAlumnoFactura = QtWidgets.QLineEdit(parent=self.widget_22)
+        self.lineEdit_NombreAlumnoFactura.setReadOnly(True)
+        self.lineEdit_NombreAlumnoFactura.setObjectName("lineEdit_NombreAlumnoFactura")
+        self.horizontalLayout_22.addWidget(self.lineEdit_NombreAlumnoFactura)
+        self.verticalLayout_28.addWidget(self.widget_22)
+        self.widget_21 = QtWidgets.QWidget(parent=self.widget_19)
+        self.widget_21.setObjectName("widget_21")
+        self.horizontalLayout_24 = QtWidgets.QHBoxLayout(self.widget_21)
+        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
+        self.label_35 = QtWidgets.QLabel(parent=self.widget_21)
+        self.label_35.setObjectName("label_35")
+        self.horizontalLayout_24.addWidget(self.label_35)
+        self.lineEdit_ApellidoPAlumnoFactura = QtWidgets.QLineEdit(parent=self.widget_21)
+        self.lineEdit_ApellidoPAlumnoFactura.setReadOnly(True)
+        self.lineEdit_ApellidoPAlumnoFactura.setObjectName("lineEdit_ApellidoPAlumnoFactura")
+        self.horizontalLayout_24.addWidget(self.lineEdit_ApellidoPAlumnoFactura)
+        self.verticalLayout_28.addWidget(self.widget_21)
+        self.widget_6 = QtWidgets.QWidget(parent=self.widget_19)
+        self.widget_6.setObjectName("widget_6")
+        self.horizontalLayout_40 = QtWidgets.QHBoxLayout(self.widget_6)
+        self.horizontalLayout_40.setObjectName("horizontalLayout_40")
+        self.label_40 = QtWidgets.QLabel(parent=self.widget_6)
+        self.label_40.setObjectName("label_40")
+        self.horizontalLayout_40.addWidget(self.label_40)
+        self.lineEdit_ApellidoMAlumFactura = QtWidgets.QLineEdit(parent=self.widget_6)
+        self.lineEdit_ApellidoMAlumFactura.setReadOnly(True)
+        self.lineEdit_ApellidoMAlumFactura.setObjectName("lineEdit_ApellidoMAlumFactura")
+        self.horizontalLayout_40.addWidget(self.lineEdit_ApellidoMAlumFactura)
+        self.verticalLayout_28.addWidget(self.widget_6)
+        self.horizontalLayout_21.addWidget(self.widget_19)
+        self.widget_20 = QtWidgets.QWidget(parent=self.widget_4)
+        self.widget_20.setObjectName("widget_20")
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout(self.widget_20)
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
+        self.widget_24 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_24.setObjectName("widget_24")
+        self.horizontalLayout_23 = QtWidgets.QHBoxLayout(self.widget_24)
+        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
+        self.label_36 = QtWidgets.QLabel(parent=self.widget_24)
+        self.label_36.setObjectName("label_36")
+        self.horizontalLayout_23.addWidget(self.label_36)
+        self.lineEdit_ClavetrabajoFactura = QtWidgets.QLineEdit(parent=self.widget_24)
+        self.lineEdit_ClavetrabajoFactura.setReadOnly(True)
+        self.lineEdit_ClavetrabajoFactura.setObjectName("lineEdit_ClavetrabajoFactura")
+        self.horizontalLayout_23.addWidget(self.lineEdit_ClavetrabajoFactura)
+        self.verticalLayout_27.addWidget(self.widget_24)
+        self.widget_23 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_23.setObjectName("widget_23")
+        self.horizontalLayout_25 = QtWidgets.QHBoxLayout(self.widget_23)
+        self.horizontalLayout_25.setObjectName("horizontalLayout_25")
+        self.label_37 = QtWidgets.QLabel(parent=self.widget_23)
+        self.label_37.setObjectName("label_37")
+        self.horizontalLayout_25.addWidget(self.label_37)
+        self.lineEdit_NivelEducativo = QtWidgets.QLineEdit(parent=self.widget_23)
+        self.lineEdit_NivelEducativo.setReadOnly(True)
+        self.lineEdit_NivelEducativo.setObjectName("lineEdit_NivelEducativo")
+        self.horizontalLayout_25.addWidget(self.lineEdit_NivelEducativo)
+        self.verticalLayout_27.addWidget(self.widget_23)
+        self.horizontalLayout_21.addWidget(self.widget_20)
+        self.verticalLayout_18.addWidget(self.widget_4)
+        self.widget_9 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_9.setMinimumSize(QtCore.QSize(0, 200))
+        self.widget_9.setObjectName("widget_9")
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self.widget_9)
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
+        self.widget_26 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_26.setObjectName("widget_26")
+        self.horizontalLayout_26 = QtWidgets.QHBoxLayout(self.widget_26)
+        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
+        self.label_38 = QtWidgets.QLabel(parent=self.widget_26)
+        self.label_38.setObjectName("label_38")
+        self.horizontalLayout_26.addWidget(self.label_38)
+        self.lineEdit_CURPFactura = QtWidgets.QLineEdit(parent=self.widget_26)
+        self.lineEdit_CURPFactura.setReadOnly(True)
+        self.lineEdit_CURPFactura.setObjectName("lineEdit_CURPFactura")
+        self.horizontalLayout_26.addWidget(self.lineEdit_CURPFactura)
+        self.verticalLayout_29.addWidget(self.widget_26)
+        self.widget_25 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_25.setObjectName("widget_25")
+        self.horizontalLayout_33 = QtWidgets.QHBoxLayout(self.widget_25)
+        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
+        self.label_39 = QtWidgets.QLabel(parent=self.widget_25)
+        self.label_39.setObjectName("label_39")
+        self.horizontalLayout_33.addWidget(self.label_39)
+        self.textEdit_ConceptoFactura = QtWidgets.QTextEdit(parent=self.widget_25)
+        self.textEdit_ConceptoFactura.setObjectName("textEdit_ConceptoFactura")
+        self.horizontalLayout_33.addWidget(self.textEdit_ConceptoFactura)
+        self.verticalLayout_29.addWidget(self.widget_25)
+        self.verticalLayout_18.addWidget(self.widget_9)
+        self.widget_5 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.widget_5.setMinimumSize(QtCore.QSize(0, 200))
+        self.widget_5.setObjectName("widget_5")
+        self.horizontalLayout_39 = QtWidgets.QHBoxLayout(self.widget_5)
+        self.horizontalLayout_39.setObjectName("horizontalLayout_39")
+        self.tableWidget_Factura = QtWidgets.QTableWidget(parent=self.widget_5)
+        self.tableWidget_Factura.setStyleSheet("QTableWidget{\n"
 "background-color:rgb(217,217,217);\n"
 "color: black;\n"
-"font-size: 16px;\n"
+"font-size: 13px;\n"
 "font-family:arial;\n"
 "Padding:3px;\n"
 "}\n"
@@ -1002,80 +1616,77 @@ class Ui_MainWindow(object):
 "color: black; \n"
 "font-weight: bold; \n"
 "}")
-        self.tableWidget_DatosFactura.setObjectName("tableWidget_DatosFactura")
-        self.tableWidget_DatosFactura.setColumnCount(9)
-        self.tableWidget_DatosFactura.setRowCount(0)
+        self.tableWidget_Factura.setObjectName("tableWidget_Factura")
+        self.tableWidget_Factura.setColumnCount(7)
+        self.tableWidget_Factura.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(0, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(1, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(2, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(3, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(4, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(5, item)
+        self.tableWidget_Factura.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_DatosFactura.setHorizontalHeaderItem(8, item)
-        self.horizontalLayout_TablaDatosFactura.addWidget(self.tableWidget_DatosFactura)
-        self.verticalLayout_19.addWidget(self.frame_TablaDatosFactura)
-        self.frame_BotonesFactura = QtWidgets.QFrame(parent=self.frame_SeleccionarAlumno)
-        self.frame_BotonesFactura.setStyleSheet("QPushButton{\n"
+        self.tableWidget_Factura.setHorizontalHeaderItem(6, item)
+        self.tableWidget_Factura.horizontalHeader().setCascadingSectionResizes(True)
+        self.tableWidget_Factura.horizontalHeader().setMinimumSectionSize(40)
+        self.horizontalLayout_39.addWidget(self.tableWidget_Factura)
+        self.verticalLayout_18.addWidget(self.widget_5)
+        self.verticalLayout_18.setStretch(0, 5)
+        self.verticalLayout_18.setStretch(1, 12)
+        self.verticalLayout_18.setStretch(2, 12)
+        self.verticalLayout_18.setStretch(3, 12)
+        self.verticalLayout_18.setStretch(4, 12)
+        self.verticalLayout_18.setStretch(5, 12)
+        self.verticalLayout_18.setStretch(6, 12)
+        self.verticalLayout_18.setStretch(7, 12)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_17.addWidget(self.scrollArea)
+        self.widget_7 = QtWidgets.QWidget(parent=self.page_Factura)
+        self.widget_7.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_7.setStyleSheet("QPushButton:hover{\n"
+"border: 1px solid black;\n"
+"}\n"
+"QPushButton{\n"
+"font-size:13px;\n"
+"}\n"
+"QPushButton{\n"
 "background-color:rgb(217,217,217);\n"
-"font-size:16px;\n"
-"font-family:Arial;\n"
-"padding:6;\n"
-"}")
-        self.frame_BotonesFactura.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_BotonesFactura.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_BotonesFactura.setObjectName("frame_BotonesFactura")
-        self.horizontalLayout_23 = QtWidgets.QHBoxLayout(self.frame_BotonesFactura)
-        self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_23.setSpacing(10)
-        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
-        self.pushButton_EliminarFactura = QtWidgets.QPushButton(parent=self.frame_BotonesFactura)
-        self.pushButton_EliminarFactura.setStyleSheet("QPushButton{\n"
-"background-color:rgb(209,48,48);\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-color:rgb(210,50,50);\n"
-"border:1px solid black;\n"
-"}")
-        self.pushButton_EliminarFactura.setObjectName("pushButton_EliminarFactura")
-        self.horizontalLayout_23.addWidget(self.pushButton_EliminarFactura)
-        self.pushButton_VisualizarFactura = QtWidgets.QPushButton(parent=self.frame_BotonesFactura)
-        self.pushButton_VisualizarFactura.setStyleSheet("QPushButton{\n"
 "color:black;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color:rgb(220,220,220);\n"
-"border:1px solid black;\n"
 "}")
-        self.pushButton_VisualizarFactura.setIcon(icon8)
-        self.pushButton_VisualizarFactura.setObjectName("pushButton_VisualizarFactura")
-        self.horizontalLayout_23.addWidget(self.pushButton_VisualizarFactura)
-        self.pushButton_CrearFactura = QtWidgets.QPushButton(parent=self.frame_BotonesFactura)
-        self.pushButton_CrearFactura.setStyleSheet("QPushButton{\n"
-"color:black;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color:rgb(220,220,220);\n"
-"border:1px solid black;\n"
-"}")
+        self.widget_7.setObjectName("widget_7")
+        self.horizontalLayout_36 = QtWidgets.QHBoxLayout(self.widget_7)
+        self.horizontalLayout_36.setObjectName("horizontalLayout_36")
+        self.pushButton_ImprimirFactura = QtWidgets.QPushButton(parent=self.widget_7)
+        self.pushButton_ImprimirFactura.setStyleSheet("")
+        self.pushButton_ImprimirFactura.setIcon(icon8)
+        self.pushButton_ImprimirFactura.setIconSize(QtCore.QSize(32, 32))
+        self.pushButton_ImprimirFactura.setObjectName("pushButton_ImprimirFactura")
+        self.horizontalLayout_36.addWidget(self.pushButton_ImprimirFactura)
+        self.pushButton_PrevisualizarFactura = QtWidgets.QPushButton(parent=self.widget_7)
+        self.pushButton_PrevisualizarFactura.setMinimumSize(QtCore.QSize(0, 31))
+        self.pushButton_PrevisualizarFactura.setStyleSheet("")
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap("Icono_Proyecto/Icono_enviar.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_CrearFactura.setIcon(icon9)
-        self.pushButton_CrearFactura.setObjectName("pushButton_CrearFactura")
-        self.horizontalLayout_23.addWidget(self.pushButton_CrearFactura)
-        self.verticalLayout_19.addWidget(self.frame_BotonesFactura, 0, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.verticalLayout_17.addWidget(self.frame_SeleccionarAlumno)
+        self.pushButton_PrevisualizarFactura.setIcon(icon9)
+        self.pushButton_PrevisualizarFactura.setIconSize(QtCore.QSize(32, 32))
+        self.pushButton_PrevisualizarFactura.setObjectName("pushButton_PrevisualizarFactura")
+        self.horizontalLayout_36.addWidget(self.pushButton_PrevisualizarFactura)
+        self.pushButton_EliminarFactura = QtWidgets.QPushButton(parent=self.widget_7)
+        self.pushButton_EliminarFactura.setMinimumSize(QtCore.QSize(0, 31))
+        self.pushButton_EliminarFactura.setStyleSheet("QPushButton:hover{\n"
+"border: 1px solid white;\n"
+"background-color:rgb(209,48,48);\n"
+"}")
+        self.pushButton_EliminarFactura.setObjectName("pushButton_EliminarFactura")
+        self.horizontalLayout_36.addWidget(self.pushButton_EliminarFactura)
+        self.verticalLayout_17.addWidget(self.widget_7)
+        self.verticalLayout_17.setStretch(0, 90)
         self.stackedWidget.addWidget(self.page_Factura)
         self.page_Padre = QtWidgets.QWidget()
         self.page_Padre.setStyleSheet("QLineEdit{\n"
@@ -1091,7 +1702,29 @@ class Ui_MainWindow(object):
 "color:rgb(0,0,0);\n"
 "font-family:Arial;\n"
 "font-size:16px;\n"
-"}")
+"}\n"
+"QComboBox{\n"
+"color:black;\n"
+"background-color:rgb(217,217,217);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"font-size:16px;\n"
+"font-family:Arial;\n"
+"}\n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: rgb(70,60,130);\n"
+"        color: white;\n"
+"    }")
         self.page_Padre.setObjectName("page_Padre")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.page_Padre)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
@@ -1128,17 +1761,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.addWidget(self.comboBox_BuscarPadre)
         self.verticalLayout_12.addWidget(self.frame_SuperiorPadre)
         self.frame_Principal_Padre = QtWidgets.QFrame(parent=self.page_Padre)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_Principal_Padre.sizePolicy().hasHeightForWidth())
         self.frame_Principal_Padre.setSizePolicy(sizePolicy)
-        self.frame_Principal_Padre.setMaximumSize(QtCore.QSize(1000, 200))
+        self.frame_Principal_Padre.setMinimumSize(QtCore.QSize(0, 0))
+        self.frame_Principal_Padre.setMaximumSize(QtCore.QSize(2000, 200))
         self.frame_Principal_Padre.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_Principal_Padre.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_Principal_Padre.setObjectName("frame_Principal_Padre")
         self.formLayout_3 = QtWidgets.QFormLayout(self.frame_Principal_Padre)
-        self.formLayout_3.setContentsMargins(-1, -1, 10, -1)
+        self.formLayout_3.setContentsMargins(0, 0, 10, 0)
+        self.formLayout_3.setHorizontalSpacing(0)
+        self.formLayout_3.setVerticalSpacing(10)
         self.formLayout_3.setObjectName("formLayout_3")
         self.frame_LabelPadre = QtWidgets.QFrame(parent=self.frame_Principal_Padre)
         self.frame_LabelPadre.setStyleSheet("padding:0px;")
@@ -1152,12 +1788,15 @@ class Ui_MainWindow(object):
         self.label_NombreAlumno_2 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
         self.label_NombreAlumno_2.setObjectName("label_NombreAlumno_2")
         self.verticalLayout_13.addWidget(self.label_NombreAlumno_2)
-        self.label_3 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout_13.addWidget(self.label_3)
         self.label_ApellidosAlumno_2 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
         self.label_ApellidosAlumno_2.setObjectName("label_ApellidosAlumno_2")
         self.verticalLayout_13.addWidget(self.label_ApellidosAlumno_2)
+        self.label_3 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_13.addWidget(self.label_3)
+        self.label_41 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
+        self.label_41.setObjectName("label_41")
+        self.verticalLayout_13.addWidget(self.label_41)
         self.label_CurpAlumno_2 = QtWidgets.QLabel(parent=self.frame_LabelPadre)
         self.label_CurpAlumno_2.setObjectName("label_CurpAlumno_2")
         self.verticalLayout_13.addWidget(self.label_CurpAlumno_2)
@@ -1166,7 +1805,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addWidget(self.label_ClaveTrabajoAlumno_2)
         self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.frame_LabelPadre)
         self.frame_LineEditPadre = QtWidgets.QFrame(parent=self.frame_Principal_Padre)
-        self.frame_LineEditPadre.setMaximumSize(QtCore.QSize(900, 200))
+        self.frame_LineEditPadre.setMaximumSize(QtCore.QSize(2000, 200))
         self.frame_LineEditPadre.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_LineEditPadre.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_LineEditPadre.setObjectName("frame_LineEditPadre")
@@ -1181,16 +1820,98 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.lineEdit_NombrePadre)
         self.lineEdit_ApellidoPpadre = QtWidgets.QLineEdit(parent=self.frame_LineEditPadre)
         self.lineEdit_ApellidoPpadre.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.lineEdit_ApellidoPpadre.setMaxLength(50)
         self.lineEdit_ApellidoPpadre.setObjectName("lineEdit_ApellidoPpadre")
         self.verticalLayout_14.addWidget(self.lineEdit_ApellidoPpadre)
         self.lineEdit_ApellidoMpadre = QtWidgets.QLineEdit(parent=self.frame_LineEditPadre)
         self.lineEdit_ApellidoMpadre.setMaxLength(50)
         self.lineEdit_ApellidoMpadre.setObjectName("lineEdit_ApellidoMpadre")
         self.verticalLayout_14.addWidget(self.lineEdit_ApellidoMpadre)
+        self.dateEdit_FechaNacimientoPadre = QtWidgets.QDateEdit(parent=self.frame_LineEditPadre)
+        self.dateEdit_FechaNacimientoPadre.setStyleSheet("QDateEdit {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: #333333;\n"
+"        border: 1px solid #c0c0c0;\n"
+"        border-radius: 5px;\n"
+"        padding: 5px;\n"
+"        min-width: 110px;\n"
+"font-size: 16px;\n"
+"font-family: arial;\n"
+"    }\n"
+"\n"
+"    QDateEdit::drop-down {\n"
+"        border: none;\n"
+"        width: 20px;\n"
+"    }\n"
+"\n"
+" \n"
+"\n"
+"   \n"
+"    QCalendarWidget QWidget {\n"
+"        alternate-background-color: #f0f0f0;\n"
+"color: black;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QToolButton {\n"
+"        height: 30px;\n"
+"        color: black;\n"
+"        background-color: white;\n"
+"        border: none;\n"
+"        border-radius: 4px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QToolButton:hover {\n"
+"        background-color: #e5f3ff;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QSpinBox {\n"
+"        height: 25px;\n"
+"        width: 60px;\n"
+"        color: black;\n"
+"        background-color: white;\n"
+"        selection-background-color: #0078d7;\n"
+"        selection-color: white;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView {\n"
+"        background-color: white;\n"
+"        selection-background-color: #0078d7;\n"
+"        selection-color: white;\n"
+"        outline: none;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView::item:hover {\n"
+"        background-color: #e5f3ff;\n"
+"    }\n"
+"\n"
+"    QCalendarWidget QTableView::item:selected {\n"
+"        background-color: #0078d7;\n"
+"        color: white;\n"
+"    }\n"
+"    \n"
+"    QCalendarWidget QMenu {\n"
+"        background-color: white;\n"
+"        border: 1px solid #c0c0c0;\n"
+"}\n"
+"")
+        self.dateEdit_FechaNacimientoPadre.setDateTime(QtCore.QDateTime(QtCore.QDate(1960, 9, 15), QtCore.QTime(1, 0, 0)))
+        self.dateEdit_FechaNacimientoPadre.setMaximumDateTime(QtCore.QDateTime(QtCore.QDate(2007, 1, 1), QtCore.QTime(23, 59, 59)))
+        self.dateEdit_FechaNacimientoPadre.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(1960, 1, 2), QtCore.QTime(6, 0, 0)))
+        self.dateEdit_FechaNacimientoPadre.setCalendarPopup(True)
+        self.dateEdit_FechaNacimientoPadre.setObjectName("dateEdit_FechaNacimientoPadre")
+        self.verticalLayout_14.addWidget(self.dateEdit_FechaNacimientoPadre)
         self.lineEdit_RFCPadre = QtWidgets.QLineEdit(parent=self.frame_LineEditPadre)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit_RFCPadre.sizePolicy().hasHeightForWidth())
+        self.lineEdit_RFCPadre.setSizePolicy(sizePolicy)
+        self.lineEdit_RFCPadre.setMaxLength(13)
         self.lineEdit_RFCPadre.setObjectName("lineEdit_RFCPadre")
         self.verticalLayout_14.addWidget(self.lineEdit_RFCPadre)
         self.lineEdit_CorreoElectronicoPadre = QtWidgets.QLineEdit(parent=self.frame_LineEditPadre)
+        self.lineEdit_CorreoElectronicoPadre.setMaxLength(50)
         self.lineEdit_CorreoElectronicoPadre.setObjectName("lineEdit_CorreoElectronicoPadre")
         self.verticalLayout_14.addWidget(self.lineEdit_CorreoElectronicoPadre)
         self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.frame_LineEditPadre)
@@ -1218,11 +1939,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_16 = QtWidgets.QVBoxLayout()
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_7.setContentsMargins(25, -1, 10, -1)
+        self.horizontalLayout_7.setContentsMargins(20, -1, 10, 30)
         self.horizontalLayout_7.setSpacing(0)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.label_17 = QtWidgets.QLabel(parent=self.page_Padre)
-        self.label_17.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_17.setMaximumSize(QtCore.QSize(125, 16777215))
         self.label_17.setObjectName("label_17")
         self.horizontalLayout_7.addWidget(self.label_17)
         self.comboBox_Regimen = QtWidgets.QComboBox(parent=self.page_Padre)
@@ -1240,52 +1961,74 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.addLayout(self.horizontalLayout_7)
         self.verticalLayout_12.addLayout(self.verticalLayout_16)
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_12.setContentsMargins(-1, -1, 10, -1)
+        self.horizontalLayout_12.setContentsMargins(-1, 40, 10, 0)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.formLayout_4 = QtWidgets.QFormLayout()
         self.formLayout_4.setContentsMargins(20, -1, 0, -1)
-        self.formLayout_4.setHorizontalSpacing(20)
+        self.formLayout_4.setSpacing(20)
         self.formLayout_4.setObjectName("formLayout_4")
         self.lineEdit_Calle = QtWidgets.QLineEdit(parent=self.page_Padre)
+        self.lineEdit_Calle.setMaxLength(50)
         self.lineEdit_Calle.setObjectName("lineEdit_Calle")
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.lineEdit_Calle)
-        self.lineEdit_CodigoPostal = QtWidgets.QLineEdit(parent=self.page_Padre)
-        self.lineEdit_CodigoPostal.setMinimumSize(QtCore.QSize(340, 0))
-        self.lineEdit_CodigoPostal.setObjectName("lineEdit_CodigoPostal")
-        self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.lineEdit_CodigoPostal)
         self.label_18 = QtWidgets.QLabel(parent=self.page_Padre)
         self.label_18.setObjectName("label_18")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_18)
         self.label_19 = QtWidgets.QLabel(parent=self.page_Padre)
         self.label_19.setObjectName("label_19")
         self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_19)
+        self.comboBox_CP = QtWidgets.QComboBox(parent=self.page_Padre)
+        self.comboBox_CP.setStyleSheet("QComboBox{\n"
+"padding: 5px;\n"
+"border-radius:5px;\n"
+"background-color:rgb(217,217,217);\n"
+"color:black;\n"
+"font-size:16px;\n"
+"font-family:arial;\n"
+"}")
+        self.comboBox_CP.setEditable(True)
+        self.comboBox_CP.setObjectName("comboBox_CP")
+        self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.comboBox_CP)
         self.horizontalLayout_12.addLayout(self.formLayout_4)
         self.formLayout_5 = QtWidgets.QFormLayout()
         self.formLayout_5.setHorizontalSpacing(20)
+        self.formLayout_5.setVerticalSpacing(21)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_21 = QtWidgets.QLabel(parent=self.page_Padre)
         self.label_21.setObjectName("label_21")
         self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_21)
-        self.lineEdit_Colonia = QtWidgets.QLineEdit(parent=self.page_Padre)
-        self.lineEdit_Colonia.setObjectName("lineEdit_Colonia")
-        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.lineEdit_Colonia)
         self.label_22 = QtWidgets.QLabel(parent=self.page_Padre)
         self.label_22.setObjectName("label_22")
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_22)
         self.lineEdit_Estado = QtWidgets.QLineEdit(parent=self.page_Padre)
+        self.lineEdit_Estado.setMaxLength(50)
+        self.lineEdit_Estado.setReadOnly(True)
         self.lineEdit_Estado.setObjectName("lineEdit_Estado")
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.lineEdit_Estado)
+        self.comboBox_Colonia = QtWidgets.QComboBox(parent=self.page_Padre)
+        self.comboBox_Colonia.setStyleSheet("QComboBox{\n"
+"padding: 5px;\n"
+"border-radius:5px;\n"
+"background-color:rgb(217,217,217);\n"
+"color:black;\n"
+"font-size:16px;\n"
+"font-family:arial;\n"
+"}")
+        self.comboBox_Colonia.setEditable(True)
+        self.comboBox_Colonia.setObjectName("comboBox_Colonia")
+        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.comboBox_Colonia)
         self.horizontalLayout_12.addLayout(self.formLayout_5)
         self.verticalLayout_12.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_11.setContentsMargins(25, -1, 10, -1)
-        self.horizontalLayout_11.setSpacing(50)
+        self.horizontalLayout_11.setContentsMargins(25, 0, 10, -1)
+        self.horizontalLayout_11.setSpacing(5)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.label_20 = QtWidgets.QLabel(parent=self.page_Padre)
         self.label_20.setMaximumSize(QtCore.QSize(150, 16777215))
         self.label_20.setObjectName("label_20")
         self.horizontalLayout_11.addWidget(self.label_20)
         self.lineEdit_Municipio = QtWidgets.QLineEdit(parent=self.page_Padre)
+        self.lineEdit_Municipio.setMaxLength(50)
         self.lineEdit_Municipio.setObjectName("lineEdit_Municipio")
         self.horizontalLayout_11.addWidget(self.lineEdit_Municipio)
         self.verticalLayout_12.addLayout(self.horizontalLayout_11)
@@ -1342,6 +2085,28 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.frame_18)
         self.stackedWidget.addWidget(self.page_Padre)
         self.page_ModificarUsuario = QtWidgets.QWidget()
+        self.page_ModificarUsuario.setStyleSheet("QComboBox{\n"
+"color:black;\n"
+"background-color:rgb(217,217,217);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"font-size:16px;\n"
+"font-family:Arial;\n"
+"}\n"
+"    QComboBox QAbstractItemView {\n"
+"        background-color: rgb(217,217,217);\n"
+"        color: black;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item {\n"
+"        min-height: 25px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"    \n"
+"    QComboBox QAbstractItemView::item:hover {\n"
+"        background-color: rgb(70,60,130);\n"
+"        color: white;\n"
+"    }")
         self.page_ModificarUsuario.setObjectName("page_ModificarUsuario")
         self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.page_ModificarUsuario)
         self.verticalLayout_22.setObjectName("verticalLayout_22")
@@ -1580,7 +2345,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1600,15 +2365,14 @@ class Ui_MainWindow(object):
         self.comboBox_BuscarAlumno.setCurrentText(_translate("MainWindow", "Buscar Alumno"))
         self.comboBox_BuscarAlumno.setPlaceholderText(_translate("MainWindow", "Buscar alumno"))
         self.label_NombreAlumno.setText(_translate("MainWindow", "Nombre del Alumno:"))
-        self.label_2.setText(_translate("MainWindow", "Apellido Materno:"))
         self.label_ApellidosAlumno.setText(_translate("MainWindow", "Apellido Paterno:"))
+        self.label_2.setText(_translate("MainWindow", "Apellido Materno:"))
         self.label_5.setText(_translate("MainWindow", "Fecha de Nacimiento"))
         self.label_CurpAlumno.setText(_translate("MainWindow", "CURP:"))
         self.label_ClaveTrabajoAlumno.setText(_translate("MainWindow", "Clave de trabajo:"))
         self.label_NivelEducativoAlumno.setText(_translate("MainWindow", "Nivel educativo:"))
         self.label_15.setText(_translate("MainWindow", "Cantidad a Pagar"))
-        self.label_RFCtutorAlumno.setText(_translate("MainWindow", "RFC del tutor:"))
-        self.lineEdit_Fecha_Nacimiento.setText(_translate("MainWindow", "DD/MM/AAAA"))
+        self.label_RFCtutorAlumno.setText(_translate("MainWindow", "RFC del Padre:"))
         self.label_CantidadPago.setText(_translate("MainWindow", "$ 0000"))
         self.PushBoton_Insertar_Alumno.setText(_translate("MainWindow", "INSERTAR"))
         self.PushBoton_Modificar_Alumno.setText(_translate("MainWindow", "MODIFICAR"))
@@ -1624,52 +2388,51 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Fecha entrada"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Fecha salida"))
-        self.pushButton_2.setText(_translate("MainWindow", "Visualizar"))
+        self.pushButton_2.setText(_translate("MainWindow", "VISUALIZAR"))
+        self.label_16.setText(_translate("MainWindow", "Lupa"))
         self.comboBox_SeleccionarPadre.setCurrentText(_translate("MainWindow", "Seleccionar Padre"))
-        self.comboBox_SeleccionarPadre.setPlaceholderText(_translate("MainWindow", "Buscar Padre"))
-        self.label_RFCReceptor.setText(_translate("MainWindow", "RFC Recepetor:"))
-        self.label_NombreReceptor.setText(_translate("MainWindow", "Nombre:"))
-        self.label_ApellidosReceptor.setText(_translate("MainWindow", "Apellidos:"))
-        self.label__DomicilioFiscal.setText(_translate("MainWindow", "Domicilio Fiscal:"))
-        self.label_RegimenFiscal.setText(_translate("MainWindow", "Régimen Fiscal:"))
-        self.label_UsoCFDI.setText(_translate("MainWindow", "Uso del CFDI:"))
-        self.label_Moneda.setText(_translate("MainWindow", "Moneda:"))
-        self.label_FormaPago.setText(_translate("MainWindow", "Forma de Pago:"))
-        self.label_MetodoPago.setText(_translate("MainWindow", "Método de Pago:"))
+        self.label_28.setText(_translate("MainWindow", "Nombre:"))
+        self.label_27.setText(_translate("MainWindow", "Apellido Paterno:"))
+        self.label_26.setText(_translate("MainWindow", "Apellido Materno:"))
+        self.label_23.setText(_translate("MainWindow", "RFC:"))
+        self.label_25.setText(_translate("MainWindow", "Domicilio Fiscal:"))
+        self.label_24.setText(_translate("MainWindow", "Régimen Fiscal:"))
+        self.label_29.setText(_translate("MainWindow", "Uso CFDI:"))
+        self.label_30.setText(_translate("MainWindow", "Forma de Pago:"))
+        self.label_31.setText(_translate("MainWindow", "Moneda:"))
+        self.label_32.setText(_translate("MainWindow", "Método de pago:"))
+        self.label_33.setText(_translate("MainWindow", "Lupa"))
         self.comboBox_SeleccionarAlumno.setCurrentText(_translate("MainWindow", "Seleccionar Alumno"))
-        self.comboBox_SeleccionarAlumno.setPlaceholderText(_translate("MainWindow", "Buscar Alumno"))
-        self.label_ObjetoImpuesto.setText(_translate("MainWindow", "Objeto Impuesto:"))
-        self.label_ExcentoIVA.setText(_translate("MainWindow", "Excento IVA:"))
-        self.label_Cantidad.setText(_translate("MainWindow", "Cantidad:"))
-        self.label_Unidad.setText(_translate("MainWindow", "Unidad:"))
-        self.label_Descripcion.setText(_translate("MainWindow", "Descripción:"))
-        self.label_Precio.setText(_translate("MainWindow", "Precio:"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Clave del producto y/o Servicio"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "No. identificicación"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Cantidad"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "Clave unidad"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "Unidad"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "Valor unitario"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(6)
-        item.setText(_translate("MainWindow", "Importe"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(7)
-        item.setText(_translate("MainWindow", "Objeto Impuesto"))
-        item = self.tableWidget_DatosFactura.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "Descripción"))
-        self.pushButton_EliminarFactura.setText(_translate("MainWindow", "Eliminar"))
-        self.pushButton_VisualizarFactura.setText(_translate("MainWindow", "Visualizar"))
-        self.pushButton_CrearFactura.setText(_translate("MainWindow", "Facturar"))
+        self.label_34.setText(_translate("MainWindow", "Nombre"))
+        self.label_35.setText(_translate("MainWindow", "Apellido Paterno:"))
+        self.label_40.setText(_translate("MainWindow", "Apellido Materno:"))
+        self.label_36.setText(_translate("MainWindow", "Clave de trabajo:"))
+        self.label_37.setText(_translate("MainWindow", "Nivel Educativo:"))
+        self.label_38.setText(_translate("MainWindow", "CURP:"))
+        self.label_39.setText(_translate("MainWindow", "Concepto:"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "CANTIDAD"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "UNIDAD"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "CLAVE"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "DESCRIPCIÓN "))
+        item = self.tableWidget_Factura.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "OBJETO IMPUESTO"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "PRECIO"))
+        item = self.tableWidget_Factura.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "IMPUESTO"))
+        self.pushButton_ImprimirFactura.setText(_translate("MainWindow", "PREEVISUALIZAR"))
+        self.pushButton_PrevisualizarFactura.setText(_translate("MainWindow", "CONFIRMAR"))
+        self.pushButton_EliminarFactura.setText(_translate("MainWindow", "ELIMINAR"))
         self.comboBox_BuscarPadre.setCurrentText(_translate("MainWindow", "Buscar Padre"))
         self.comboBox_BuscarPadre.setPlaceholderText(_translate("MainWindow", "Buscar Padre"))
         self.label_NombreAlumno_2.setText(_translate("MainWindow", "Nombre del Padre:"))
-        self.label_3.setText(_translate("MainWindow", "Apellido Materno:"))
         self.label_ApellidosAlumno_2.setText(_translate("MainWindow", "Apellido Paterno:"))
+        self.label_3.setText(_translate("MainWindow", "Apellido Materno:"))
+        self.label_41.setText(_translate("MainWindow", "Fecha de Nacimiento:"))
         self.label_CurpAlumno_2.setText(_translate("MainWindow", "RFC:"))
         self.label_ClaveTrabajoAlumno_2.setText(_translate("MainWindow", "Correo Electronico:"))
         self.label.setText(_translate("MainWindow", "DATOS FISCALES"))
@@ -1683,14 +2446,14 @@ class Ui_MainWindow(object):
         self.PushBoton_Modificar_Padre.setText(_translate("MainWindow", "MODIFICAR"))
         self.PushBoton_Eliminar_Padre.setText(_translate("MainWindow", "ELIMINAR"))
         self.label_6.setText(_translate("MainWindow", "BUSCAR"))
-        self.label_7.setText(_translate("MainWindow", "RFC"))
-        self.label_14.setText(_translate("MainWindow", "Nombre"))
-        self.label_8.setText(_translate("MainWindow", "Apellido Paterno"))
-        self.label_13.setText(_translate("MainWindow", "Apellido Materno"))
-        self.label_12.setText(_translate("MainWindow", "No.Serial"))
-        self.label_9.setText(_translate("MainWindow", "Usuario"))
-        self.label_11.setText(_translate("MainWindow", "Contraseña"))
-        self.label_10.setText(_translate("MainWindow", "Cargo"))
+        self.label_7.setText(_translate("MainWindow", "RFC:"))
+        self.label_14.setText(_translate("MainWindow", "Nombre:"))
+        self.label_8.setText(_translate("MainWindow", "Apellido Paterno:"))
+        self.label_13.setText(_translate("MainWindow", "Apellido Materno:"))
+        self.label_12.setText(_translate("MainWindow", "Número serial:"))
+        self.label_9.setText(_translate("MainWindow", "Usuario:"))
+        self.label_11.setText(_translate("MainWindow", "Contraseña:"))
+        self.label_10.setText(_translate("MainWindow", "Cargo:"))
         self.BotonInsertarAlta.setText(_translate("MainWindow", "INSERTAR"))
         self.BotonModificarAlta.setText(_translate("MainWindow", "MODIFICAR"))
         self.BotonEliminarAlta.setText(_translate("MainWindow", "ELIMINAR"))

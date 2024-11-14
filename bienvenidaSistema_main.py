@@ -1,7 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QMainWindow, QApplication, QMessageBox
 from bienvenidaSistema_view import Ui_MainWindow
-from login_main import login
+from login_main import logins
 
 class Bienvenida(QMainWindow):
     
@@ -14,9 +14,9 @@ class Bienvenida(QMainWindow):
 
     def openLoginWindow(self):
         
-        self.main_window = login()
+        self.main_window = logins()
         self.main_window.show()
-        self.close()  
+        self.destroy()  
 
     def closeApp(self):
 

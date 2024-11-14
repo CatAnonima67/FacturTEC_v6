@@ -1,11 +1,7 @@
 import psycopg2
 
-conexion1 = psycopg2.connect(database="Base_Oficial_Factura", 
+conexion1 = psycopg2.connect(database="FactuAPP", 
                              user="postgres", 
-                             password="Coco", 
-                             host="localhost",
-                             port="5432")
-
-
+                             password="Coco")
 
 cursor1=conexion1.cursor()
