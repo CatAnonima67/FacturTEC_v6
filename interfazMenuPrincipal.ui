@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1070</width>
+    <width>1186</width>
     <height>1024</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>50</width>
+    <width>0</width>
     <height>0</height>
    </size>
   </property>
@@ -206,7 +206,10 @@ QComboBox {
 		color: black;
     }
 
-
+QLineEdit:focus{
+border:1px solid black;
+background-color:rgb(230,230,230) ;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -1124,8 +1127,8 @@ border-radius:5px
 QPushButton{
 background-color: transparent;
 text-align:left;
-
 padding: 2px 5px;
+
 
 }
 
@@ -1159,9 +1162,32 @@ color: white;
               <number>0</number>
              </property>
              <item>
+              <widget class="QPushButton" name="pushButton_Padre">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Padre de Familia</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>Icono_Proyecto/Seccion_Padre.png</normaloff>Icono_Proyecto/Seccion_Padre.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>38</width>
+                 <height>38</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="pushButton_Alumno">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1185,32 +1211,9 @@ color: white;
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_Padre">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Padre de Familia</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>Icono_Proyecto/Seccion_Padre.png</normaloff>Icono_Proyecto/Seccion_Padre.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>38</width>
-                 <height>38</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="pushButton_NuevaFactura">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1233,7 +1236,7 @@ color: white;
              <item>
               <widget class="QPushButton" name="pushButton_Informes">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1256,7 +1259,7 @@ color: white;
              <item>
               <widget class="QPushButton" name="pushButton_Bitacora">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -1491,6 +1494,12 @@ border: 1px solid white;
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>900</width>
+        <height>0</height>
+       </size>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <property name="spacing">
         <number>0</number>
@@ -1687,7 +1696,7 @@ border: 1px solid white;
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="page_Principal">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1787,9 +1796,15 @@ font-family:Arial;
               </property>
               <item alignment="Qt::AlignVCenter">
                <widget class="QFrame" name="frame_SuperiorAlumno">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
-                  <width>1000</width>
+                  <width>2000</width>
                   <height>40</height>
                  </size>
                 </property>
@@ -1801,7 +1816,7 @@ font-family:Arial;
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_9">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>6</number>
                  </property>
                  <property name="leftMargin">
                   <number>50</number>
@@ -1817,6 +1832,12 @@ font-family:Arial;
                  </property>
                  <item>
                   <widget class="QPushButton" name="pushButton_LupaBuscarAlumno">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>35</width>
@@ -1840,9 +1861,15 @@ font-family:Arial;
                  </item>
                  <item>
                   <widget class="QComboBox" name="comboBox_BuscarAlumno">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="maximumSize">
                     <size>
-                     <width>800</width>
+                     <width>1800</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -2089,7 +2116,7 @@ font-family:Arial;
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>1000</width>
+                  <width>2000</width>
                   <height>600</height>
                  </size>
                 </property>
@@ -2169,16 +2196,16 @@ font-family:Arial;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_ClaveTrabajoAlumno">
+                     <widget class="QLabel" name="label_NivelEducativoAlumno">
                       <property name="text">
-                       <string>Clave de trabajo:</string>
+                       <string>Nivel educativo:</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_NivelEducativoAlumno">
+                     <widget class="QLabel" name="label_ClaveTrabajoAlumno">
                       <property name="text">
-                       <string>Nivel educativo:</string>
+                       <string>Clave de trabajo:</string>
                       </property>
                      </widget>
                     </item>
@@ -2525,17 +2552,17 @@ color: black;
                       </property>
                       <property name="maximumDateTime">
                        <datetime>
-                        <hour>23</hour>
+                        <hour>11</hour>
                         <minute>59</minute>
                         <second>59</second>
                         <year>2025</year>
                         <month>1</month>
-                        <day>2</day>
+                        <day>4</day>
                        </datetime>
                       </property>
                       <property name="minimumDateTime">
                        <datetime>
-                        <hour>6</hour>
+                        <hour>18</hour>
                         <minute>0</minute>
                         <second>0</second>
                         <year>2006</year>
@@ -2573,26 +2600,19 @@ color: black;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="lineEdit_ClaveTrabajoAlumno">
-                      <property name="maxLength">
-                       <number>10</number>
+                     <widget class="QLineEdit" name="lineEdit_NivelEducativo2">
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox_NivelEducativo">
-                      <property name="styleSheet">
-                       <string notr="true">QComboBox{
-padding: 5px;
-border-radius:5px;
-background-color:rgb(217,217,217);
-color:black;
-font-size:16px;
-font-family:arial;
-}</string>
+                     <widget class="QLineEdit" name="lineEdit_ClaveTrabajoAlumno">
+                      <property name="maxLength">
+                       <number>10</number>
                       </property>
-                      <property name="editable">
-                       <bool>false</bool>
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -2990,7 +3010,7 @@ font-family:Arial;
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>804</width>
+                   <width>920</width>
                    <height>1247</height>
                   </rect>
                  </property>
@@ -3700,7 +3720,7 @@ background-color:rgb(209,48,48);
               <string notr="true">QLineEdit{
 border-radius:5px;
 background-color: rgb(217,217,217);
-padding: 7px;
+padding: 5px;
 color: rgb(0,0,0);
 font-size: 16px;
 font-family:Arial;
@@ -3822,13 +3842,13 @@ border-radius: 10px;
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>0</height>
+                  <height>230</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>2000</width>
-                  <height>200</height>
+                  <height>230</height>
                  </size>
                 </property>
                 <property name="frameShape">
@@ -3858,6 +3878,12 @@ border-radius: 10px;
                  </property>
                  <item row="0" column="0">
                   <widget class="QFrame" name="frame_LabelPadre">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>230</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">padding:0px;</string>
                    </property>
@@ -3930,6 +3956,12 @@ border-radius: 10px;
                  </item>
                  <item row="0" column="1">
                   <widget class="QFrame" name="frame_LineEditPadre">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>230</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>2000</width>
@@ -4064,27 +4096,34 @@ color: black;
                       </property>
                       <property name="dateTime">
                        <datetime>
-                        <hour>1</hour>
+                        <hour>18</hour>
                         <minute>0</minute>
                         <second>0</second>
                         <year>1960</year>
-                        <month>9</month>
-                        <day>15</day>
+                        <month>1</month>
+                        <day>5</day>
                        </datetime>
+                      </property>
+                      <property name="time">
+                       <time>
+                        <hour>18</hour>
+                        <minute>0</minute>
+                        <second>0</second>
+                       </time>
                       </property>
                       <property name="maximumDateTime">
                        <datetime>
-                        <hour>23</hour>
+                        <hour>11</hour>
                         <minute>59</minute>
                         <second>59</second>
                         <year>2007</year>
                         <month>1</month>
-                        <day>1</day>
+                        <day>2</day>
                        </datetime>
                       </property>
                       <property name="minimumDateTime">
                        <datetime>
-                        <hour>6</hour>
+                        <hour>18</hour>
                         <minute>0</minute>
                         <second>0</second>
                         <year>1960</year>
@@ -4107,6 +4146,12 @@ color: black;
                       </property>
                       <property name="maxLength">
                        <number>13</number>
+                      </property>
+                      <property name="cursorMoveStyle">
+                       <enum>Qt::LogicalMoveStyle</enum>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -4212,7 +4257,10 @@ font-family:arial;
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="50,50">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
                 <property name="topMargin">
                  <number>40</number>
                 </property>
@@ -4253,12 +4301,18 @@ font-family:arial;
                   <item row="1" column="0">
                    <widget class="QLabel" name="label_19">
                     <property name="text">
-                     <string>No.Calle :</string>
+                     <string>Calle:</string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
                    <widget class="QComboBox" name="comboBox_CP">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">QComboBox{
 padding: 5px;
@@ -4298,16 +4352,6 @@ font-family:arial;
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit_Estado">
-                    <property name="maxLength">
-                     <number>50</number>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="1">
                    <widget class="QComboBox" name="comboBox_Colonia">
                     <property name="styleSheet">
@@ -4320,7 +4364,11 @@ font-size:16px;
 font-family:arial;
 }</string>
                     </property>
-                    <property name="editable">
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="lineEdit_Estado">
+                    <property name="readOnly">
                      <bool>true</bool>
                     </property>
                    </widget>
@@ -4360,6 +4408,9 @@ font-family:arial;
                  <widget class="QLineEdit" name="lineEdit_Municipio">
                   <property name="maxLength">
                    <number>50</number>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -4485,7 +4536,7 @@ font-family:Arial;
                   <widget class="QFrame" name="frame_14">
                    <property name="maximumSize">
                     <size>
-                     <width>900</width>
+                     <width>2000</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -4597,19 +4648,6 @@ color:black;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_12">
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Número serial:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QLabel" name="label_9">
                          <property name="font">
                           <font>
@@ -4695,6 +4733,9 @@ border-radius:5px;
                            <pointsize>12</pointsize>
                           </font>
                          </property>
+                         <property name="maxLength">
+                          <number>13</number>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -4710,6 +4751,9 @@ border-radius:5px;
                            <family>Arial</family>
                            <pointsize>12</pointsize>
                           </font>
+                         </property>
+                         <property name="maxLength">
+                          <number>50</number>
                          </property>
                         </widget>
                        </item>
@@ -4727,6 +4771,9 @@ border-radius:5px;
                            <pointsize>12</pointsize>
                           </font>
                          </property>
+                         <property name="maxLength">
+                          <number>50</number>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -4743,21 +4790,8 @@ border-radius:5px;
                            <pointsize>12</pointsize>
                           </font>
                          </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="serialAlta">
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>35</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>12</pointsize>
-                          </font>
+                         <property name="maxLength">
+                          <number>50</number>
                          </property>
                         </widget>
                        </item>
@@ -4775,6 +4809,9 @@ border-radius:5px;
                            <pointsize>12</pointsize>
                           </font>
                          </property>
+                         <property name="maxLength">
+                          <number>30</number>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -4791,23 +4828,13 @@ border-radius:5px;
                            <pointsize>12</pointsize>
                           </font>
                          </property>
+                         <property name="maxLength">
+                          <number>8</number>
+                         </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="cargoAlta">
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>35</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>12</pointsize>
-                          </font>
-                         </property>
-                        </widget>
+                        <widget class="QComboBox" name="comboBox_Cargo"/>
                        </item>
                       </layout>
                      </widget>

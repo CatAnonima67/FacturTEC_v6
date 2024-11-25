@@ -9,7 +9,7 @@ import psycopg2
 from conexionDB import cursor1, conexion1
 from fpdf import FPDF
 from PyPDF2 import PdfMerger, PdfReader, PdfWriter
-from PyQt6.QtCore import QUrl
+from PyQt6.QtCore import QUrl,QDate
 from PyQt6.QtGui import QDesktopServices
 from PyQt6.QtGui import QRegularExpressionValidator
 from PyQt6.QtCore import QRegularExpression
@@ -66,6 +66,10 @@ class Menus(QMainWindow):
         self.ui.lineEdit_CURPalumno.setMaxLength(18)
         self.ui.lineEdit_RFCtutorAlumno.setMaxLength(13)
 
+        lineEditcp = self.ui.comboBox_CP.lineEdit()
+        lineEditcp.setMaxLength(5)
+
+
         self.ui.PushBoton_Insertar_Alumno.clicked.connect(self.guardar_datos_alumno)
         self.ui.PushBoton_Eliminar_Alumno.clicked.connect(self.confirmar_eliminacion_alumno)
 
@@ -97,7 +101,7 @@ class Menus(QMainWindow):
         self.ui.comboBox_Colonia.activated.connect(self.mostrar_datos_Colonia)
 
 
-        self.obtener_nivel_educativo()
+        self.ui.dateEdit.dateChanged.connect(self.cargar_nivel_escolar)
         self.obtener_regimen_fiscal()
         self.vizualizar_Bitacora()
         self.cargar_usuarios()
@@ -105,7 +109,7 @@ class Menus(QMainWindow):
         self.cargar_padres()
         self.cargar_CP()
         self.cargar_Colonia()
-        
+        self.cargar_Cargo()
         #self.generar_curp()
         
         
@@ -143,7 +147,7 @@ class Menus(QMainWindow):
     
      #Funcion Ventana Personalizable Prueba
     def mostrar_mensaje(self, titulo, tipo_ventana, mensaje):
-        msg_box = QMessageBox(self) 
+        msg_box = QMessageBox() 
         msg_box.setWindowTitle(titulo)
         msg_box.setText(mensaje)
         msg_box.setStyleSheet("QLabel { color: black; }")
@@ -159,40 +163,45 @@ class Menus(QMainWindow):
 
         elif tipo_ventana == "pregunta":
             msg_box.setIcon(QMessageBox.Icon.Question)
+            msg_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
 
+            yes_button = msg_box.button(QMessageBox.StandardButton.Yes)
+            no_button = msg_box.button(QMessageBox.StandardButton.No)
+
+            yes_button.setText("Sí")
+            no_button.setText("No")
         else:
          msg_box.setIcon(QMessageBox.Icon.NoIcon)
 
-        msg_box.exec()
+        return msg_box.exec()
+    
+    def validarPadreHijo(self, curps, rfcs, apellidop, apellidom, apellidopH, apellidomH):
+        curp_relevante = curps[:10] + curps[13:16]
+        curpCMama = curps[2]
+        
+        if (curp_relevante[:2] == rfcs[:2] or curpCMama == rfcs[0])and(apellidom == apellidomH or apellidop == apellidopH or apellidom == apellidopH or apellidop == apellidomH ) :
+                es_valido = True
+        else:
+            es_valido = False
+        return es_valido
+
 
     def cerrarSesion(self):
-        # Mensaje de salida
-        self.mostrar_mensaje("Confirmar Cierre de Sesion","advertencia","¿Estás seguro de que deseas cerrar sesión?")
-        self.mostrar_mensaje.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No) #checar si funciona
-        
-        # Cambiar texto de los botones (opcional) chechar si no pa quitarlo
-        yes_button = self.mostrar_mensaje.button(QMessageBox.StandardButton.Yes)
-        no_button = self.mostrar_mensaje.button(QMessageBox.StandardButton.No)
 
-        yes_button.setText("Sí") #checar esto porque creo se repite
-        no_button.setText("No")
-
-        # Mostrar el cuadro de diálogo
-        respuesta = self.mostrar_mensaje.exec()#hechar esto otro
+        respuesta = self.mostrar_mensaje("Confirmar cierre de sesión","pregunta","¿Estás seguro que desear cerrar sesión?")
 
         # Comprobar la respuesta del usuario
         if respuesta == QMessageBox.StandardButton.Yes:
             self.fecha_cierre = datetime.datetime.now().replace(microsecond=0)   # Registrar la hora de cierre de sesión
             self.is_logged=True
             # Mostrar mensaje de información
-            self.mostrar_mensaje("Cerrar sesion","informacion","Cerrará el sistema")
+            self.mostrar_mensaje("Cerrar sesion","informacion","Volverá al login")
             # Regresar al login
             self.openLoginWindow()
             
         else:
             pass #no hace nada si es nope
-    
-
+    ############################################# ALUMNO ###########################################
     def guardar_datos_alumno(self):
     # Obtener los datos de los campos
         nombreAlumno = self.ui.lineEdit_NombreAlumno.text().strip()
@@ -202,21 +211,27 @@ class Menus(QMainWindow):
         rfcReceptor = self.ui.lineEdit_RFCtutorAlumno.text().strip()
         claveTrabajo = self.ui.lineEdit_ClaveTrabajoAlumno.text().strip()
         fechaNacAlum = self.ui.dateEdit.date().toString("ddMMyyyy")
-        id_nivel_escolar = self.ui.comboBox_NivelEducativo.currentData()[0]
-    
+        id_nivel_escolar = self.ui.lineEdit_NivelEducativo2.text().strip()
 
         fecha_invertida = fechaNacAlum[4:] + fechaNacAlum[2:4] + fechaNacAlum[:2]
         nombre_completo =self.ui.lineEdit_ApellidoPalumno.text().strip() + " " + self.ui.lineEdit_ApellidoMalumno.text().strip()+ " " + self.ui.lineEdit_NombreAlumno.text().strip()
 
-        if  len(curpAlumno)<18:
-            self.mostrar_mensaje("Error","informacion","El tamaño del campo CURP no está completo.")
+        if not nombreAlumno or not curpAlumno or not apellidoMalumno or not apellidoPalumno or not claveTrabajo or not rfcReceptor or not id_nivel_escolar:
+            
+            self.mostrar_mensaje("Error","critico","Campos no pueden estar vacíos")  
             return
         
         if not self.validar_curp(curpAlumno, nombre_completo, fecha_invertida):
             self.mostrar_mensaje("CURP inválida","advertencia", "La CURP no coincide con el nombre y fecha proporcionados.")
+            return
         else:
             self.mostrar_mensaje("Éxito","informacion", "La CURP es válida para el nombre y fecha ingresados.")
 
+            
+        if  len(curpAlumno)<18:
+            self.mostrar_mensaje("Error","informacion","El tamaño del campo CURP no está completo.")
+            return
+        
         if len(rfcReceptor)<13:
             self.mostrar_mensaje("Error","advertencia", "El tamaño del campo RFC del tutor no está completo.")
             return
@@ -224,24 +239,36 @@ class Menus(QMainWindow):
         if not self.validar_rfc1(rfcReceptor):
             self.mostrar_mensaje("RFC inválido","advertencia", "Por favor, ingresa un RFC válido.")
 
+
         if len(claveTrabajo)<10:
              
             self.mostrar_mensaje("Error","advertencia", "El tamaño del campo Clave de trabajo no está completo.")
             return
         
         # Verificar que los campos no estén vacíos
-        if not nombreAlumno or not curpAlumno or not apellidoMalumno or not apellidoPalumno or not claveTrabajo or not rfcReceptor or not id_nivel_escolar:
-            
-            self.mostrar_mensaje("Error","critico","Campos no pueden estar vacíos")  
+        
+        cursor1.execute("SELECT apellido_paterno, apellido_materno FROM padre WHERE rfc_padre = %s;",(rfcReceptor,))
+        apelldidosP = cursor1.fetchone()
+        
+        if apelldidosP == None:
+            self.mostrar_mensaje("Error", "critico", "Datos del padre no encontrados")
             return
-        try:
-            id_nivel_escolar = int(id_nivel_escolar)
-        except (TypeError, ValueError):
+        
+        apellidoPa = apelldidosP[0]
+        apellidoMa = apelldidosP [1]
+        print("apellido paterno",apellidoPa)
+        print("apellido materno",apellidoMa)
 
-            self.mostrar_mensaje("Error","critico","El nivel escolar no es válido.")  
-            return
-        # Verificar si el RFC del padre ya existe en la base de datos
+
+        if not self.validarPadreHijo(curpAlumno, rfcReceptor, apellidoPa, apellidoMa, apellidoPalumno, apellidoMalumno):
+                self.mostrar_mensaje("Error", "critico", "El padre no coincide con el hijo")
+                return
+        
+        fechaNacAlum = self.ui.dateEdit.date().toString()
+        
         cursor1.execute("SELECT rfc_padre FROM padre WHERE rfc_padre = %s;", (rfcReceptor,))
+        
+        
         if cursor1.fetchone() is None:
 
             self.mostrar_mensaje("Error","critico","RFC del padre no existente.") 
@@ -257,7 +284,7 @@ class Menus(QMainWindow):
             # Insertar datos en la tabla 'alumno_nivel_escolar'
             cursor1.execute(
                 "INSERT INTO alumno_nivel_escolar (curp, id_nivel_escolar) VALUES (%s, %s)",
-                (curpAlumno, id_nivel_escolar)
+                (curpAlumno, claveTrabajo)
             )
 
             # Insertar datos en la tabla 'alumno_padre'
@@ -267,18 +294,28 @@ class Menus(QMainWindow):
             )
             
             # Insertar datos en la tabla 'alumno_instituto'
-            cursor1.execute(
+            """cursor1.execute(
                 "INSERT INTO alumno_instituto (curp, clave_centro_trabajo) VALUES (%s, %s)",
                 (curpAlumno, claveTrabajo)
-            )
+            )"""
 
             # Confirmar cambios en la base de datos
             conexion1.commit()
             self.mostrar_mensaje("Exito","informacion","Datos guardados correctamente.") 
 
+            self.ui.lineEdit_ApellidoPalumno.clear()
+            self.ui.lineEdit_NombreAlumno.clear()
+            self.ui.lineEdit_ApellidoMalumno.clear()
+            self.ui.lineEdit_CURPalumno.clear()
+            self.ui.lineEdit_ClaveTrabajoAlumno.clear()
+            self.ui.lineEdit_RFCtutorAlumno.clear()
+
+            self.actualizar_contenido_alumno()
+
+
         except psycopg2.Error as e:
             conexion1.rollback()  # Revertir cambios si ocurre un error
-            self.mostrar_mensaje("Error","critico",f"Error al guardar datos del alumno: {e}") 
+            self.mostrar_mensaje("Error","critico","Error al guardar alumno, CURP duplicada") 
     
     def modificar_alumno(self):
         nombreAlumno = self.ui.lineEdit_NombreAlumno.text().strip()
@@ -287,26 +324,50 @@ class Menus(QMainWindow):
         apellidoMalumno = self.ui.lineEdit_ApellidoMalumno.text().strip()
         rfcReceptor = self.ui.lineEdit_RFCtutorAlumno.text().strip()
         claveTrabajo = self.ui.lineEdit_ClaveTrabajoAlumno.text().strip()
-        id_nivel_escolar = self.ui.comboBox_NivelEducativo.currentData()[0]
+        id_nivel_escolar = self.ui.lineEdit_NivelEducativo2.text().strip()
         fechaNacAlum = self.ui.dateEdit.date().toString("ddMMyyyy")
-        curpAlumnoaf1 = self.curpaf
 
-
-        if  len(curpAlumno)<18:
-            self.mostrar_mensaje("Error","advertencia","El tamaño del campo CURP no está completo.")
-            
-        if len(rfcReceptor)<13:
-            self.mostrar_mensaje("Error","advertencia","El tamaño del campo RFC del tutor no está completo.")
-            return
-        
-        if len(claveTrabajo)<10:
-            self.mostrar_mensaje("Error","advertencia","El tamaño del campo Clave de trabajo no está completo.")
-            return
+        fecha_invertida = fechaNacAlum[4:] + fechaNacAlum[2:4] + fechaNacAlum[:2]
+        nombre_completo =self.ui.lineEdit_ApellidoPalumno.text().strip() + " " + self.ui.lineEdit_ApellidoMalumno.text().strip()+ " " + self.ui.lineEdit_NombreAlumno.text().strip()
         
         if not nombreAlumno or not curpAlumno or not apellidoMalumno or not apellidoPalumno or not claveTrabajo or not rfcReceptor or not id_nivel_escolar:
-           
-            self.mostrar_mensaje("Error","critico","Campos no pueden estar vacíos.")
+            self.mostrar_mensaje("Error","advertencia","Campos no pueden estar vacíos.")
             return
+
+        if not self.validar_curp(curpAlumno, nombre_completo, fecha_invertida):
+            self.mostrar_mensaje("CURP inválida","advertencia", "La CURP no coincide con el nombre y fecha proporcionados.")
+            return
+        
+        else:
+            self.mostrar_mensaje("Éxito","informacion", "La CURP es válida para el nombre y fecha ingresados.")
+
+        if  len(curpAlumno)<18:
+            self.mostrar_mensaje("Error","informacion","El tamaño del campo CURP no está completo.")
+            return
+
+        if len(rfcReceptor)<13:
+            self.mostrar_mensaje("Error","advertencia", "El tamaño del campo RFC del tutor no está completo.")
+            return
+        
+        if not self.validar_rfc1(rfcReceptor):
+            self.mostrar_mensaje("RFC inválido","advertencia", "Por favor, ingresa un RFC válido.")
+
+
+        if len(claveTrabajo)<10: 
+            self.mostrar_mensaje("Error","advertencia", "El tamaño del campo Clave de trabajo no está completo.")
+            return
+        
+        cursor1.execute("SELECT apellido_paterno, apellido_materno FROM padre WHERE rfc_padre = %s;",(rfcReceptor,))
+        apelldidosP = cursor1.fetchone()
+
+        apellidoPa = apelldidosP[0]
+        apellidoMa = apelldidosP [1]
+
+        if not self.validarPadreHijo(curpAlumno, rfcReceptor, apellidoPa, apellidoMa, apellidoPalumno, apellidoMalumno):
+                self.mostrar_mensaje("Error", "critico", "El padre con coincide con el hijo")
+                return
+        fechaNacAlum = self.ui.dateEdit.date().toString()
+        curpAlumnoaf1 = self.curpaf
         
         try:
         
@@ -315,12 +376,12 @@ class Menus(QMainWindow):
                 self.mostrar_mensaje("Error","critico","RFC del Padre no existe.")
                 return
             
-            cursor1.execute("ALTER TABLE alumno_instituto DISABLE TRIGGER ALL;")
+            #cursor1.execute("ALTER TABLE alumno_instituto DISABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE alumno_nivel_escolar DISABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE alumno DISABLE TRIGGER ALL;")
 
             # Actualizar las claves externas en las tablas relacionadas
-            cursor1.execute("UPDATE alumno_instituto SET curp = %s WHERE curp = %s;", (curpAlumno, curpAlumnoaf1))
+            #cursor1.execute("UPDATE alumno_instituto SET curp = %s WHERE curp = %s;", (curpAlumno, curpAlumnoaf1))
             cursor1.execute("UPDATE alumno_nivel_escolar SET curp = %s WHERE curp = %s;", (curpAlumno, curpAlumnoaf1))
             cursor1.execute("UPDATE alumno SET curp = %s, nombre = %s, apellido_paterno = %s, apellido_materno = %s, fecha_nacimiento = %s WHERE curp = %s", (curpAlumno, nombreAlumno, apellidoPalumno, apellidoMalumno, fechaNacAlum, curpAlumnoaf1))
 
@@ -328,7 +389,7 @@ class Menus(QMainWindow):
             cursor1.execute("UPDATE alumno_padre SET curp = %s, rfc_padre = %s WHERE curp = %s;", (curpAlumno, rfcReceptor, curpAlumnoaf1))
 
             # Reactivar las restricciones de clave externa
-            cursor1.execute("ALTER TABLE alumno_instituto ENABLE TRIGGER ALL;")
+            #cursor1.execute("ALTER TABLE alumno_instituto ENABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE alumno_nivel_escolar ENABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE alumno ENABLE TRIGGER ALL;")
 
@@ -346,7 +407,7 @@ class Menus(QMainWindow):
         """Función para cargar todos los alumnos en el ComboBox"""
         try:
             # Obtener todos los alumnos de la tabla
-            cursor1.execute("SELECT curp, nombre, apellido_paterno, apellido_materno FROM alumno;")
+            cursor1.execute("SELECT curp, nombre, apellido_paterno, apellido_materno FROM alumno ORDER BY apellido_paterno ;")
             alumnos = cursor1.fetchall()
 
             # Limpiar el ComboBox y agregar la opción "Buscar"
@@ -371,6 +432,17 @@ class Menus(QMainWindow):
         curp_seleccionado = self.ui.comboBox_BuscarAlumno.currentText()
         print(curp_seleccionado)
 
+        if curp_seleccionado == "Buscar alumno":
+            self.ui.lineEdit_ApellidoPalumno.clear()
+            self.ui.lineEdit_NombreAlumno.clear()
+            self.ui.lineEdit_ApellidoMalumno.clear()
+            self.ui.lineEdit_CURPalumno.clear()
+            self.ui.lineEdit_ClaveTrabajoAlumno.clear()
+            self.ui.lineEdit_RFCtutorAlumno.clear()
+            self.ui.lineEdit_NivelEducativo2.clear()
+            self.ui.label_CantidadPago.clear()
+            return
+
         # Verificar que se haya seleccionado un CURP válido
         if curp_seleccionado is None:
             return  # Si no hay CURP, no hacemos nada
@@ -383,32 +455,29 @@ class Menus(QMainWindow):
             cursor1.execute("SELECT rfc_padre FROM alumno_padre WHERE curp = %s;", (curp_seleccionado,))
             alumno_padre_datos = cursor1.fetchone()
 
-            cursor1.execute("SELECT clave_centro_trabajo FROM alumno_instituto WHERE curp = %s;", (curp_seleccionado,))
-            alumno_instituto_datos = cursor1.fetchone()
-
             cursor1.execute("SELECT id_nivel_escolar FROM alumno_nivel_escolar WHERE curp = %s;", (curp_seleccionado,))
             alumno_nivel_datos = cursor1.fetchone()
+            
+            cursor1.execute("SELECT id_nivel_escolar FROM alumno_nivel_escolar WHERE curp = %s;", (curp_seleccionado,))
+            alumno_nivel_datos = cursor1.fetchone()
+
+            id_alumno_nivel, = alumno_nivel_datos
+            print(id_alumno_nivel)
+
+
+            cursor1.execute("SELECT nivel FROM costo_nivel_escolar WHERE id_nivel_escolar = %s;", (id_alumno_nivel,))
+            nivel_educativo_dato = cursor1.fetchone()[0]
+            print(nivel_educativo_dato)
             
             # Si se encuentran datos en la tabla 'alumno'
             if alumno_datos:
                 nombre, apellido_paterno, apellido_materno, curp, fechaNacimiento = alumno_datos
                 rfc_padre, = alumno_padre_datos
-                clave_centro_trabajo, = alumno_instituto_datos
-                id_alumno_nivel, = alumno_nivel_datos
-                print("ID Nivel Educativo obtenido:", id_alumno_nivel)
-                # Obtener el nombre del nivel educativo basado en el id_alumno_nivel
-                cursor1.execute("SELECT nivel FROM costo_nivel_escolar WHERE id_nivel_escolar = %s;", (id_alumno_nivel,))
-                nivel_educativo_dato = cursor1.fetchone()
-                print(nivel_educativo_dato)
-                if nivel_educativo_dato:
-                    nombre_nivel_educativo = nivel_educativo_dato[0]
-                    print(nivel_educativo_dato)
-                    self.ui.comboBox_NivelEducativo.setCurrentText(nombre_nivel_educativo)
-                else:
-                    self.ui.comboBox_NivelEducativo.setCurrentText("")  # Si no se encuentra el nivel, limpiar
-
+                nivelescolar = nivel_educativo_dato
+                
+                self.ui.lineEdit_NivelEducativo2.setText(nivelescolar)# Si no se encuentra el nivel, limpiar
                 # Actualizar el resto de los campos
-                self.ui.lineEdit_ClaveTrabajoAlumno.setText(clave_centro_trabajo)
+                self.ui.lineEdit_ClaveTrabajoAlumno.setText(id_alumno_nivel)
                 self.ui.lineEdit_RFCtutorAlumno.setText(rfc_padre)
                 self.ui.lineEdit_NombreAlumno.setText(nombre)
                 self.ui.lineEdit_ApellidoPalumno.setText(apellido_paterno)
@@ -417,22 +486,16 @@ class Menus(QMainWindow):
                 self.ui.dateEdit.setDate(fechaNacimiento)
                 self.curpaf = curp
 
-        except psycopg2.Error as e:
-            self.mostrar_mensaje("Error","critico", f"Error al mostrar datos del alumno: {e}")
+        except psycopg2.Error:
+            self.mostrar_mensaje("Error","critico", "Error al mostrar datos del alumno")
 
     
     def eliminar_alumno(self):
-        
+
         alumno_a_eliminar = self.ui.lineEdit_CURPalumno.text()
 
         try:
-        
-            cursor1.execute("""
-                DELETE FROM alumno_instituto
-                WHERE curp = %s;
-            """, (alumno_a_eliminar,))
 
-            
             cursor1.execute("""
                 DELETE FROM alumno_padre 
                 WHERE curp = %s;
@@ -454,18 +517,19 @@ class Menus(QMainWindow):
 
             self.actualizar_contenido_alumno()      
 
-        except psycopg2.Error as e:
+        except psycopg2.Error:
             conexion1.rollback()
-            self.mostrar_mensaje("Error Eliminación de Usuario","critico", f"Error al eliminar el usuario: {e}")
+            self.mostrar_mensaje("Error Eliminación de Usuario","critico", "Error al eliminar el usuario")
     
     def confirmar_eliminacion_alumno(self):
-        
-        respuesta = self.mostrar_mensaje("Confirmar Eliminación","pregunta","¿Estás seguro de que deseas eliminar este alumno?")
-        respuesta.setStandardButtons(respuesta.StandardButton.Yes | respuesta.StandardButton.No)
 
-        # Ejecutar el cuadro de diálogo y capturar la respuesta
-        resultado = respuesta.exec()
-        if resultado == QMessageBox.StandardButton.Yes:
+        if not self.ui.lineEdit_RFCtutorAlumno.text().strip() or not self.ui.lineEdit_CURPalumno.text().strip() or not self.ui.lineEdit_ApellidoMalumno.text().strip() or not self.ui.lineEdit_NombreAlumno.text().strip() or not self.ui.lineEdit_ApellidoPalumno.text().strip():
+            self.mostrar_mensaje("Error","advertencia","Alumno no seleccionado aún.")
+            return
+
+        respuesta = self.mostrar_mensaje("Confirmar Eliminación","pregunta","¿Estás seguro de que deseas eliminar este alumno?")  
+        
+        if respuesta == QMessageBox.StandardButton.Yes:
             self.eliminar_alumno()
             self.ui.lineEdit_ApellidoPalumno.clear()
             self.ui.lineEdit_NombreAlumno.clear()
@@ -473,31 +537,63 @@ class Menus(QMainWindow):
             self.ui.lineEdit_CURPalumno.clear()
             self.ui.lineEdit_ClaveTrabajoAlumno.clear()
             self.ui.lineEdit_RFCtutorAlumno.clear()
-            
-            
+        else:
+            pass
+
+
     def actualizar_contenido_alumno(self):
         self.ui.comboBox_BuscarAlumno.clear()
         self.cargar_alumnos()
-        self.mostrar_datos_alumno()
     
+    def cargar_nivel_escolar(self):
+        fechaNacAlum = self.ui.dateEdit.date()
+
+        edad = QDate.currentDate().year() - fechaNacAlum.year()
+        print(edad)
+
+        if edad <= 15 and edad > 12: #Fecha de secundaria
+            cursor1.execute("SELECT id_nivel_escolar, nivel,costo from costo_nivel_escolar where nivel = 'SECUNDARIA'",)
+            nivel = cursor1.fetchone()
+        elif edad > 6 and edad <= 12: #Fecha de primaria
+            cursor1.execute("SELECT id_nivel_escolar, nivel,costo from costo_nivel_escolar where nivel = 'PRIMARIA'",)
+            nivel = cursor1.fetchone()
+        elif edad >= 3 and edad <= 6: #Fecha de preescolar
+            cursor1.execute("SELECT id_nivel_escolar, nivel,costo from costo_nivel_escolar where nivel = 'PREESCOLAR'",) #fecha de preescolar
+            nivel = cursor1.fetchone()
+        else: #Fecha de primaria
+            self.mostrar_mensaje("Error", "critico", "Edad fuera de rango")
+            return
+
+        id_nivel_escolar, nivelescolar, costoNivel = nivel
+
+        self.ui.lineEdit_ClaveTrabajoAlumno.setText(str(id_nivel_escolar))
+        self.ui.lineEdit_NivelEducativo2.setText(nivelescolar)
+        self.ui.label_CantidadPago.setText(str(costoNivel))    
+    ###################################### ALUMNO ##########################################
+
+
     def validacion_correo(self,correo_electronico):
-        correo_electronico = self.ui.lineEdit_CorreoElectronicoPadre.text()
+        correo_electronico = self.ui.lineEdit_CorreoElectronicoPadre.text().lower()
         patron = re.compile(r"\"?([-a-zA-Z0-9.`?{}]+@\w+\.\w+)\"?")
-        
-        ## msg_box = QMessageBox()
-        ##msg_box.setIcon(QMessageBox.Icon.Warning)
-        ##msg_box.setWindowTitle("Error")
 
         if not re.fullmatch(patron, correo_electronico):
             self.mostrar_mensaje("Error","critico", "Correo electrónico inválido.")
+            return False
         else:
-            dominio = correo_electronico.rsplit("@", 1)[-1]
+            print("segui aqui")
+            dominio_completo = correo_electronico.rsplit("@", 1)[-1]
+            dominio = dominio_completo.split(".", 1)[0]
+            print(dominio)
             try:
-                respuestas = dns.resolver.resolve(dominio, "MX")
-                if bool(respuestas):
-                    pass
-            except dns.exception.DNSException: #dns libreria dominios
+                cursor1.execute('SELECT dominio FROM dominio_correo WHERE dominio = %s;',(dominio,))
+                respuestas = cursor1.fetchone()
+                if (respuestas == None):
+                    return False
+                else:
+                    return True
+            except psycopg2.Error:
                 self.mostrar_mensaje("Error","critico", "Dominio inválido")
+                return False
     
     def guardar_datos_padre(self):
         nombrePadre = self.ui.lineEdit_NombrePadre.text().strip()
@@ -518,20 +614,31 @@ class Menus(QMainWindow):
         colonia = self.ui.comboBox_Colonia.currentText().strip()
 
         nombre_completo =self.ui.lineEdit_ApellidoPpadre.text().strip() + " " + self.ui.lineEdit_ApellidoMpadre.text().strip()+ " " + self.ui.lineEdit_NombrePadre.text().strip()
-        print(nombre_completo)
+
+
         if self.validar_rfc(rfcPadre, nombre_completo):
             self.mostrar_mensaje("Éxito","informacion", "El RFC es válido para el nombre ingresado.")
             rfcinco = False
         else:
             self.mostrar_mensaje("RFC inválido","advertencia", "El RFC no coincide con el nombre proporcionado.")
             rfcinco = True
-
+        
+        CorreoMini = correoElectronico.lower()
+        if not self.validacion_correo(CorreoMini): 
+            self.mostrar_mensaje("Dominio invalido","advertencia", "Dominio inválido")
+            return
 
         if not rfcPadre or not correoElectronico or not nombrePadre or not apellidoMpadre or not apellidoPpadre:
             self.mostrar_mensaje("Error","critico", "Campos no pueden estar vacíos.")
             return
         if rfcinco:
             self.mostrar_mensaje("Error","critico", "RFC Incorrecto Ingrese el RFC Correcto")
+            return
+        if len(codigoPostal)<5:
+            self.mostrar_mensaje("Error","advertencia", "El tamaño del código postal no está completo.")
+            
+        if len(rfcPadre)<13:
+            self.mostrar_mensaje("Error","advertencia", "El tamaño del RFC no está completo.")
             return
 
         try:
@@ -550,20 +657,28 @@ class Menus(QMainWindow):
             conexion1.commit()
             self.mostrar_mensaje("Éxito","informacion", "Datos guardados correctamente.")
 
+            self.ui.lineEdit_NombrePadre.clear()
+            self.ui.lineEdit_ApellidoPpadre.clear()
+            self.ui.lineEdit_ApellidoMpadre.clear()
+            self.ui.lineEdit_CorreoElectronicoPadre.clear()
+            self.ui.lineEdit_RFCPadre.clear()
+            self.ui.lineEdit_Calle.clear()
+            self.ui.lineEdit_Municipio.clear()
+            self.ui.lineEdit_Estado.clear()
+
             self.actualizar_contenido_padre()
         
         except psycopg2.Error as e:
             conexion1.rollback()
             self.mostrar_mensaje("Error al Guardar Padre","critico", f"Error al guardar datos del padre correctamente: {e}")
-          
-
+        
     
 
     def cargar_padres(self):
         """Función para cargar todos los alumnos en el ComboBox"""
         try:
             # Obtener todos los alumnos de la tabla
-            cursor1.execute("SELECT rfc_padre FROM padre;")
+            cursor1.execute("SELECT rfc_padre FROM padre ORDER BY apellido_paterno;")
             padres = cursor1.fetchall()
 
             # Limpiar el ComboBox y agregar la opción "Buscar"
@@ -580,94 +695,104 @@ class Menus(QMainWindow):
                 self.ui.comboBox_BuscarPadre.setCurrentIndex(0)
 
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error Cargar Padre", f"Error al cargar padres: {e}")
+            self.mostrar_mensaje("Error Cargar Padre","critico", f"Error al cargar padres: {e}")
     
     
     def mostrar_datos_padre(self):
         """Función para mostrar los datos del padre seleccionado en los QLineEdit"""
         # Obtener el RFC seleccionado en el ComboBox
         rfc_seleccionado = self.ui.comboBox_BuscarPadre.currentText()
-        print(rfc_seleccionado)
 
         # Verificar que se haya seleccionado un RFC válido
         if rfc_seleccionado is None:
-            print(rfc_seleccionado)
             return  # Si no hay RFC, no hacemos nada
+
+        if rfc_seleccionado == "Buscar Padre":
+            self.ui.lineEdit_ApellidoPpadre.clear()
+            self.ui.lineEdit_NombrePadre.clear()
+            self.ui.lineEdit_ApellidoMpadre.clear()
+            self.ui.lineEdit_RFCPadre.clear()
+            self.ui.lineEdit_Calle.clear()
+            self.ui.lineEdit_Estado.clear()
+            self.ui.lineEdit_Municipio.clear()
+            self.ui.lineEdit_CorreoElectronicoPadre.clear()
+            return
 
         try:
             # Consultar datos del padre desde la tabla 'padre'
-            cursor1.execute("SELECT nombre, apellido_paterno, apellido_materno, correo_electronico FROM padre WHERE rfc_padre = %s;",(rfc_seleccionado,))
+            cursor1.execute("SELECT nombre, apellido_paterno, apellido_materno, correo_electronico, fecha_nacimiento FROM padre WHERE rfc_padre = %s;",(rfc_seleccionado,))
             padre_datos = cursor1.fetchone()
-            print(rfc_seleccionado)
 
             cursor1.execute("SELECT clave_regimen FROM padre_regimen_fiscal WHERE rfc_padre = %s;", (rfc_seleccionado,))
             padre_regimen_datos = cursor1.fetchone()
-            print(padre_regimen_datos)
 
             cursor1.execute("SELECT estado, municipio, colonia, codigo_postal, calle FROM domicilio_padre WHERE rfc_padre = %s;", (rfc_seleccionado,))
             padre_domicilio_datos = cursor1.fetchone()
-            print(padre_domicilio_datos)
             
             if padre_datos:
-                nombre, apellido_paterno, apellido_materno, correo_electronico = padre_datos
+                nombre, apellido_paterno, apellido_materno, correo_electronico, fechaNacimiento = padre_datos
                 estado, municipio, colonia, codigo_postal, calle = padre_domicilio_datos
-                print(estado,municipio,colonia,codigo_postal,calle)
                 cursor1.execute("SELECT nombre_regimen FROM regimen_fiscal WHERE clave_regimen = %s;",(padre_regimen_datos))
                 regimen_padre = cursor1.fetchone()
-                print(regimen_padre)
                 if regimen_padre:
                     regimen_padre = regimen_padre[0]
                     self.ui.comboBox_Regimen.setCurrentText(str(regimen_padre))
                 else:
                     self.ui.comboBox_Regimen.setCurrentText("")
-
+                
                 self.ui.lineEdit_Estado.setText(estado)
                 self.ui.lineEdit_Municipio.setText(municipio)
-               # self.ui.lineEdit_CodigoPostal.setText(str(codigo_postal))
+                self.ui.comboBox_CP.setCurrentText(str(codigo_postal))
                 self.ui.lineEdit_Calle.setText(calle)
-                #self.ui.lineEdit_Colonia.setText(colonia)
-                
+                self.ui.comboBox_Colonia.setCurrentText(colonia)
                 self.ui.lineEdit_ApellidoMpadre.setText(apellido_materno)
                 self.ui.lineEdit_NombrePadre.setText(nombre)
                 self.ui.lineEdit_ApellidoPpadre.setText(apellido_paterno)
                 self.ui.lineEdit_CorreoElectronicoPadre.setText(correo_electronico)
                 self.ui.lineEdit_RFCPadre.setText(rfc_seleccionado)
+                self.ui.dateEdit_FechaNacimientoPadre.setDate(fechaNacimiento)
                 self.rfcaf = rfc_seleccionado
+                self.cargar_ColoniaEspecial()
 
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error Mostrar Padre", f"Error al mostrar datos del padre: {e}")
+            self.mostrar_mensaje("Error Mostrar Padre","critico", f"Error al mostrar datos del padre: {e}")
+            
 
     def modificar_padre(self):
+
+        #DATOS PERSONLAES
         nombrePadre = self.ui.lineEdit_NombrePadre.text().strip()
         apellidoPpadre = self.ui.lineEdit_ApellidoPpadre.text().strip()
         apellidoMpadre = self.ui.lineEdit_ApellidoMpadre.text().strip()
         rfcPadre = self.ui.lineEdit_RFCPadre.text().strip()
         correoElectronico = self.ui.lineEdit_CorreoElectronicoPadre.text().strip()
         clave_regimen = self.ui.comboBox_Regimen.currentData()
+
         if not clave_regimen:
-            QMessageBox.warning(self, "Error Régimen Inválido", "Seleccione un régimen válido.")
+            self.mostrar_mensaje("Error Régimen Inválido","advertencia", "Seleccione un régimen válido.")
             return
-        codigoPostal = self.ui.lineEdit_CodigoPostal.text().strip()
+
+        #Datos FISCALES
+        codigoPostal = self.ui.comboBox_CP.currentText().strip() #REVISAR LO MODIFIQUE ATT YOLO
         calle = self.ui.lineEdit_Calle.text().strip()
         municipio = self.ui.lineEdit_Municipio.text().strip()
         estado = self.ui.lineEdit_Estado.text().strip()
-        colonia = self.ui.lineEdit_Colonia.text().strip()
+        colonia = self.ui.comboBox_Colonia.currentText().strip() #ESTE TAMBIEN
+        
+        if not rfcPadre or not correoElectronico or not nombrePadre or not apellidoMpadre or not apellidoPpadre or not clave_regimen or not codigoPostal or not calle or not municipio:
+            self.mostrar_mensaje("Error","advertencia", "Campos no pueden estar vacíos.")
+            return
+        
+        CorreoMini = correoElectronico.lower()
+        if not self.validacion_correo(CorreoMini): #REVISAR ATT YOLO
+            self.mostrar_mensaje("Dominio invalido","advertencia", "Dominio inválido")
+            return
+        
         rfcPadreaf1 = self.rfcaf
 
-        if not rfcPadre or not correoElectronico or not nombrePadre or not apellidoMpadre or not apellidoPpadre:
-            msg_box = QMessageBox()
-            msg_box.setIcon(QMessageBox.Icon.Warning)
-            msg_box.setWindowTitle("Error")
-            msg_box.setText("Campos no pueden estar vacíos.")
-            msg_box.exec() 
-            return
-        if not self.validacion_correo(correoElectronico):
-            return
+        
 
         try:
-            
-            
-
             cursor1.execute("ALTER TABLE alumno_padre DISABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE domicilio_padre DISABLE TRIGGER ALL;")
             cursor1.execute("ALTER TABLE padre_regimen_fiscal DISABLE TRIGGER ALL;")
@@ -687,18 +812,13 @@ class Menus(QMainWindow):
 
             # Confirmar los cambios
             conexion1.commit()
-            
-            msg_box = QMessageBox()
-            msg_box.setIcon(QMessageBox.Icon.Information)
-            msg_box.setWindowTitle("Éxito")
-            msg_box.setText("Datos modificados correctamente.")
-            msg_box.exec()
+
+            self.mostrar_mensaje("Éxito","informacion", "Datos modificados correctamente.") 
             self.actualizar_contenido_padre()
+
         except psycopg2.Error as e:
             conexion1.rollback()
-            QMessageBox.critical(self,"Error", f"Error al modificar datos del padre: {e}")
-
-
+            self.mostrar_mensaje("Error","critico", f"Error al modificar datos del padre: {e}")
 
     def eliminar_padre(self):
         padre_a_eliminar = self.ui.lineEdit_RFCPadre.text().strip()  # Asegúrate de quitar espacios en blanco
@@ -710,10 +830,8 @@ class Menus(QMainWindow):
                 WHERE rfc_padre = %s;
             """, (padre_a_eliminar,))
 
-            # Obtener todos los CURPs relacionados
             alumnos_relacionados = cursor1.fetchall()
 
-            # Si hay alumnos relacionados, eliminarlos
             if alumnos_relacionados:
                 for alumno in alumnos_relacionados:
                     curp_alumno = alumno[0]
@@ -724,10 +842,6 @@ class Menus(QMainWindow):
                         WHERE curp = %s;
                     """, (curp_alumno,))
 
-                    cursor1.execute("""
-                        DELETE FROM alumno_instituto
-                        WHERE curp = %s;
-                    """, (curp_alumno,))
 
                     cursor1.execute("""
                         DELETE FROM alumno_padre
@@ -759,38 +873,37 @@ class Menus(QMainWindow):
             # Confirmar la transacción
             conexion1.commit()
 
-            msg_box = QMessageBox()
-            msg_box.setIcon(QMessageBox.Icon.Information)
-            msg_box.setWindowTitle("Éxito")
-            msg_box.setText("Padre e hijos eliminados exitosamente.")
-            msg_box.exec() 
+            self.mostrar_mensaje("Éxito","informacion", "Padre e hijos eliminados exitosamente.")
             self.actualizar_contenido_padre()
             
         except psycopg2.Error as e:
             conexion1.rollback()  # Revertir cambios en caso de error
-            QMessageBox.critical(self, "Error", f"Error al eliminar el padre: {e}")
-
+            self.mostrar_mensaje("Error","critico", f"Error al eliminar el padre: {e}")
 
     def confirmar_eliminacion_padre(self):
 
-        respuesta = QMessageBox()
-        respuesta.setIcon(QMessageBox.Icon.Question)
-        respuesta.setWindowTitle("Confirmar Eliminación")
-        respuesta.setText("¿Estás seguro de que deseas eliminar este Padre?")
-        respuesta.setStandardButtons(respuesta.StandardButton.Yes | respuesta.StandardButton.No)
-        # Ejecutar el cuadro de diálogo y capturar la respuesta
-        resultado = respuesta.exec()
+        resultado = self.mostrar_mensaje("Confirmar Eliminación","pregunta","¿Estás seguro de que deseas eliminar este Padre?")
         
         if resultado == QMessageBox.StandardButton.Yes:
             self.eliminar_padre()
+            self.actualizar_contenido_alumno()
+            self.ui.lineEdit_CURPalumno.clear()
+            self.ui.lineEdit_NombreAlumno.clear()
+            self.ui.lineEdit_RFCtutorAlumno.clear()
+            self.ui.lineEdit_ApellidoMalumno.clear()
+            self.ui.lineEdit_ApellidoPalumno.clear()
+            self.ui.lineEdit_ClaveTrabajoAlumno.clear()
+            self.ui.dateEdit.clear()
+            self.ui.lineEdit_NivelEducativo2.clear()
+            self.ui.label_CantidadPago.clear()
             self.ui.lineEdit_ApellidoMpadre.clear()
             self.ui.lineEdit_ApellidoPpadre.clear()
             self.ui.lineEdit_NombrePadre.clear()
             self.ui.lineEdit_RFCPadre.clear()
-            self.ui.lineEdit_CodigoPostal.clear()
+            self.ui.comboBox_CP.clear()
             self.ui.lineEdit_CorreoElectronicoPadre.clear()
             self.ui.lineEdit_Calle.clear()
-            self.ui.lineEdit_Colonia.clear()
+            self.ui.comboBox_Colonia.clear()
             self.ui.lineEdit_Estado.clear()
             self.ui.lineEdit_Municipio.clear()
     
@@ -802,15 +915,6 @@ class Menus(QMainWindow):
         # Asignar el validador a cada QLineEdit en la lista
         for line_edit in line_edits:
             line_edit.setValidator(validador)
-
-    def configurar_validacion_alfabeto1(self, comboboxs):
-        # Crear un validador que solo permite letras y espacios
-        regex = QRegularExpression("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$")
-        validador = QRegularExpressionValidator(regex)
-
-        # Asignar el validador a cada QLineEdit en la lista
-        for combobox in comboboxs:
-            comboboxs.setValidator(validador)
     
     def configurar_validacion_alfanumerico(self, line_edits):
 
@@ -837,7 +941,6 @@ class Menus(QMainWindow):
         cursor1.execute("SELECT id_nivel_escolar, nivel, costo FROM costo_nivel_escolar")
 
         niveles = cursor1.fetchall()
-
         for id_nivel, nombre_nivel, costo in niveles:  # Cambié el orden de los valores
             self.ui.comboBox_NivelEducativo.addItem(nombre_nivel,(id_nivel,costo) )
     
@@ -873,10 +976,12 @@ class Menus(QMainWindow):
 
             print(f"Log de sesión guardado para el usuario {self.user} desde {self.fecha_inicio} hasta {self.fecha_cierre}")
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error", 
-                                 f"Error en la conexión con la base de datos: {e}",
-                                 QMessageBox.StandardButton.Close, 
-                                 QMessageBox.StandardButton.Close)
+           self.mostrar_mensaje("Error","critico",f"Error en la conexión con la base de datos: {e}")
+           QMessageBox.StandardButton.Close #revisar
+           #QMessageBox.critical(self, "Error", 
+                                 #f"Error en la conexión con la base de datos: {e}",
+                                 #QMessageBox.StandardButton.Close, 
+                                 #QMessageBox.StandardButton.Close)
     def GuardarLog(self):
         try:
             class PDF(FPDF):
@@ -950,15 +1055,13 @@ class Menus(QMainWindow):
                 writer.write(f)
             # Cerrar la conexión
         except psycopg2.Error:
-            QMessageBox.critical(self, "Error", 
-                                 "Error en la conexión con la base de datos",
-                                 QMessageBox.StandardButton.Close, 
-                                 QMessageBox.StandardButton.Close)
+            self.mostrar_mensaje("Error","critico","Error en la conexión con la base de datos")
+            QMessageBox.StandardButton.Close,
+            #QMessageBox.StandardButton.Close
         except FPDF.error as e:
-            QMessageBox.critical(self, "Error", 
-                                 f"Error en la generación del PDF: {e}",
-                                 QMessageBox.StandardButton.Close, 
-                                 QMessageBox.StandardButton.Close)
+            self.mostrar_mensaje("Error","critico", f"Error en la generación del PDF: {e}")
+            QMessageBox.StandardButton.Close 
+     
     def closeEvent(self, event):
         #"""Función que maneja el cierre de la ventana (cuando el usuario cierra el programa)"""
         # Registrar la hora de cierre de sesión
@@ -1005,10 +1108,10 @@ class Menus(QMainWindow):
              QDesktopServices.openUrl(QUrl.fromLocalFile(pdf_path))
             except Exception as e:
             # Mostrar un mensaje de error si ocurre un problema al abrir el PDF
-             QMessageBox.critical(self, "Error", f"No se pudo abrir el archivo '{pdf_path}'.\nError: {str(e)}")
+             self.mostrar_mensaje("Error","critico",f"No se pudo abrir el archivo '{pdf_path}'.\nError: {str(e)}")
         else:
         # Mostrar un mensaje de error si el archivo no existe
-            QMessageBox.critical(self, "Error", f"El archivo '{pdf_path}' no se encontró.")
+            self.mostrar_mensaje("Error","critico", f"El archivo '{pdf_path}' no se encontró.")
 
     def guardar_datos_usuarios(self):
         # Obtener los valores de los QLineEdit
@@ -1018,16 +1121,28 @@ class Menus(QMainWindow):
         nombre = self.ui.nombreAlta.text()
         apellido_paterno = self.ui.apellidoPAlta.text()
         apellido_materno = self.ui.apellidoMAlta.text()    
-        cargo = self.ui.cargoAlta.text()
-        no_serie = self.ui.serialAlta.text()
+        cargo = self.ui.comboBox_Cargo.currentText()
+
+        
+        nombre_completo = self.ui.lineEdit_ApellidoPpadre.text().strip() + " " + self.ui.lineEdit_ApellidoMpadre.text().strip()+ " " + self.ui.lineEdit_NombrePadre.text().strip()
+
+        if not rfc or not nombre or not apellido_materno or not apellido_materno or not usuario or not contraseña or not cargo:
+            self.mostrar_mensaje("Error","critico","Campos no pueden estar vacíos")  
+            return
+
+        if self.validar_rfc(rfc, nombre_completo):
+            self.mostrar_mensaje("Éxito","informacion", "El RFC es válido para el nombre ingresado.")
+        else:
+            self.mostrar_mensaje("RFC inválido","advertencia", "El RFC no coincide con el nombre proporcionado.")
+        
 
         try:
             cursor1.execute("""
                 -- Insertar en emisor y obtener el rfc_emisor
-                INSERT INTO emisor (rfc_emisor, nombre, apellido_paterno, apellido_materno, no_serie_cer_emisor)
-                VALUES (%s, %s, %s, %s, %s) 
+                INSERT INTO emisor (rfc_emisor, nombre, apellido_paterno, apellido_materno)
+                VALUES (%s, %s, %s, %s) 
                 RETURNING rfc_emisor;
-            """, (rfc, nombre, apellido_paterno, apellido_materno, no_serie))
+            """, (rfc, nombre, apellido_paterno, apellido_materno))
 
             # Obtener el valor de `rfc_emisor` recién insertado
             rfc_insertado = cursor1.fetchone()[0]
@@ -1051,16 +1166,14 @@ class Menus(QMainWindow):
             # Confirma la transacción si todo fue exitoso
             conexion1.commit()
 
-            QMessageBox.information(self, "Éxito", "Los datos fueron guardados exitosamente.")
+            self.mostrar_mensaje("Exito","informacion","Los datos fueron guardados exitosamente.")
             self.actualizar_contenido()
 
 
         except psycopg2.Error as e:
             conexion1.rollback()  # Revertir cambios en caso de error
-            QMessageBox.critical(self, "Error", f"Error al guardar los datos: {e}")
-        finally:
-            cursor1.close()
-            conexion1.close()
+            self.mostrar_mensaje("Error","critico",f"Error al guardar los datos: {e}")
+    
 
     def cargar_usuarios(self):
         """Función para cargar todos los usuarios en el ComboBox"""
@@ -1079,13 +1192,12 @@ class Menus(QMainWindow):
             #conexion1.close()
 
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error", f"Error al cargar usuarios: {e}")
+            self.mostrar_mensaje("Error","critico",f"Error al cargar usuarios: {e}")
 
     def cargar_datos_usuario(self):
         """Función para cargar los datos del usuario seleccionado en los QLineEdit"""
         # Obtener el ID del usuario seleccionado en el ComboBox
         usuario = self.ui.comboBoxAlta.currentText().strip()
-        print(usuario)
         if usuario is None:
             return  # No hacer nada si no hay un usuario seleccionado
 
@@ -1095,31 +1207,27 @@ class Menus(QMainWindow):
             cursor1.execute(sql, (usuario,))
             resultado = cursor1.fetchone()
             rfc_emisorl = resultado[3]
-            print(rfc_emisorl)
 
-            cursor1.execute("SELECT nombre, apellido_paterno, apellido_materno, no_serie_cer_emisor FROM emisor WHERE rfc_emisor = %s;", (rfc_emisorl,))
+            cursor1.execute("SELECT nombre, apellido_paterno, apellido_materno FROM emisor WHERE rfc_emisor = %s;", (rfc_emisorl,))
             resultado1 = cursor1.fetchone()
 
             if resultado:
                 usuario, contraseña, cargo , rfc_emisor = resultado
-                nombre, apellido_paterno, apellido_materno, no_serie = resultado1
+                nombre, apellido_paterno, apellido_materno = resultado1
                 self.ui.RFCAlta.setText(rfc_emisor)
                 self.ui.usuarioAlta.setText(usuario)
                 self.ui.contraseAlta.setText(contraseña)
-                self.ui.cargoAlta.setText(cargo)
+                self.ui.comboBox_Cargo.setCurrentText(cargo)
                 self.ui.nombreAlta.setText(nombre)
                 self.ui.apellidoPAlta.setText(apellido_paterno)
                 self.ui.apellidoMAlta.setText(apellido_materno)
-                self.ui.serialAlta.setText(no_serie)
 
                 self.usuarioaf = usuario
                 self.rfcaf = rfc_emisor
 
-                print(self.usuarioaf)
-                print(self.rfcaf)
             
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error", f"Error al cargar datos del usuario: {e}")
+            self.mostrar_mensaje("Error","critico",f"Error al cargar datos del usuario: {e}")
             
 
     def modificar_datos(self):
@@ -1131,15 +1239,14 @@ class Menus(QMainWindow):
         nombre = self.ui.nombreAlta.text()
         apellido_paterno = self.ui.apellidoPAlta.text()
         apellido_materno = self.ui.apellidoMAlta.text()    
-        cargo = self.ui.cargoAlta.text()
-        no_serie = self.ui.serialAlta.text()
+        cargo = self.ui.comboBox_Cargo.currentText()
         usuarioaf1 = self.usuarioaf
-        rfcaf1 = self.rfcaf
-
-        if not usuario or not contraseña:
-            QMessageBox.warning(self, "Advertencia", "Por favor, completa todos los campos.")
+        
+        if not rfc or not nombre or not apellido_materno or not apellido_materno or not usuario or not contraseña or not cargo:
+            self.mostrar_mensaje("Error","critico","Campos no pueden estar vacíos")  
             return
-
+        
+        rfcaf1 = self.rfcaf
         try:
                 # Primero, actualizar en la tabla intermedia `emisor_cuenta_emisor`
             # 1. Verificar si el nuevo usuario existe en cuenta_emisor
@@ -1149,9 +1256,8 @@ class Menus(QMainWindow):
                 existe_usuario = cursor1.fetchone()[0]
 
                 if existe_usuario is None:
-                    QMessageBox.warning(self, "Advertencia", "El nuevo usuario no existe en cuenta_emisor.")
+                    self.mostrar_mensaje("Error","advertencia","El nuevo usuario no existe en cuenta_emisor.") 
                     return
-                
                 
                 cursor1.execute("ALTER TABLE emisor_cuenta_emisor DISABLE TRIGGER ALL;")
                 cursor1.execute("ALTER TABLE emisor DISABLE TRIGGER ALL;")
@@ -1160,23 +1266,22 @@ class Menus(QMainWindow):
                 # 2. Actualizar en `cuenta_emisor` (cambia el usuario y los demás campos)
                 cursor1.execute("""
                     UPDATE cuenta_emisor 
-                    SET usuario = %s, contrasena = %s, cargo = %s
+                    SET usuario = %s, contrasena = %s, cargo = %s, rfc_emisor = %s
                     WHERE usuario = %s;  -- Cambiar usuario en `cuenta_emisor`
-                """, (usuario, contraseña, cargo, usuarioaf1))
+                """, (usuario, contraseña, cargo, rfc, usuarioaf1))
 
                 # 3. Actualizar en la tabla intermedia `emisor_cuenta_emisor`
                 cursor1.execute("""
                     UPDATE emisor_cuenta_emisor
-                    SET usuario = %s
+                    SET usuario = %s, rfc_emisor = %s
                     WHERE usuario = %s AND rfc_emisor = %s;  -- Cambiar usuario en la tabla intermedia
-                """, (usuario, usuarioaf1, rfcaf1))
+                """, (usuario, rfc, usuarioaf1, rfcaf1))
 
                 # 4. Actualizar en `emisor`
                 cursor1.execute("""
                     UPDATE emisor 
-                    SET rfc_emisor = %s, nombre = %s, apellido_paterno = %s, apellido_materno = %s, no_serie_cer_emisor = %s
-                    WHERE rfc_emisor = %s;  -- Cambiar los detalles del emisor
-                """, (rfc, nombre, apellido_paterno, apellido_materno, no_serie, rfcaf1))
+                    SET rfc_emisor = %s, nombre = %s, apellido_paterno = %s, apellido_materno = %s WHERE rfc_emisor = %s;
+                """, (rfc, nombre, apellido_paterno, apellido_materno, rfcaf1))
 
                 cursor1.execute("ALTER TABLE emisor_cuenta_emisor ENABLE TRIGGER ALL;")
                 cursor1.execute("ALTER TABLE emisor ENABLE TRIGGER ALL;")
@@ -1184,8 +1289,7 @@ class Menus(QMainWindow):
                 
                 # Confirmar la transacción si todo fue exitoso
                 conexion1.commit()
-
-                QMessageBox.information(self, "Éxito", "Los datos fueron modificados correctamente.")
+                self.mostrar_mensaje("Exito","informacion","Los datos fueron modificados correctamente.") 
                 self.actualizar_contenido()
 
 
@@ -1194,11 +1298,18 @@ class Menus(QMainWindow):
             print(f"Error al actualizar los datos: {e}")
 
     def confirmar_eliminacion(self):
-        respuesta = QMessageBox.question(self, "Confirmar Eliminación",
-                                          "¿Estás seguro de que deseas eliminar este usuario?",
-                                          QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        respuesta = self.mostrar_mensaje("Confirmar Eliminación","pregunta","¿Estás seguro de que deseas eliminar este usuario?") 
+
         if respuesta == QMessageBox.StandardButton.Yes:
             self.eliminar_usuario()
+            self.ui.apellidoMAlta.clear()
+            self.ui.apellidoPAlta.clear()
+            self.ui.nombreAlta.clear()
+            self.ui.RFCAlta.clear()
+            self.ui.contraseAlta.clear()
+            self.ui.usuarioAlta.clear()
+        else:
+            pass
 
     def eliminar_usuario(self):
         # Obtener el usuario a eliminar, por ejemplo, desde un QLineEdit
@@ -1230,8 +1341,7 @@ class Menus(QMainWindow):
             # Confirmar la transacción
             conexion1.commit()
 
-            QMessageBox.information(self, "Éxito", "Usuario eliminado exitosamente.")
-
+            self.mostrar_mensaje("Exito","informacion","Usuario eliminado exitosamente.") 
             self.actualizar_contenido()
 
 
@@ -1254,12 +1364,13 @@ class Menus(QMainWindow):
     def generar_rfc_inicial(self, nombre_completo):
         nombres = nombre_completo.split()
         print(nombres)
-        
         if len(nombres) < 3:
             return None  # Necesitamos al menos un nombre y dos apellidos
-        
-        apellido1, apellido2, nombre = nombres[0], nombres[1], nombres[2]
-        
+        if len(nombres) == 4:
+            apellido1, apellido2, nombre, snombre = nombres[0], nombres[1], nombres[3], nombres[2]
+        if len(nombres) == 3:
+             apellido1, apellido2, nombre = nombres[0], nombres[1], nombres[2]
+                
         # Obtener la primera letra y primera vocal interna del primer apellido
         primera_letra_apellido1 = apellido1[0].upper()
         vocal_apellido1 = self.obtener_vocal(apellido1[1:])
@@ -1282,6 +1393,7 @@ class Menus(QMainWindow):
     # Función para validar RFC contra el nombre
     def validar_rfc(self, rfc, nombre_completo):
         rfc_generado = self.generar_rfc_inicial(nombre_completo)
+        print(rfc_generado)
         if not rfc_generado:
             return False  # No se pudo generar RFC inicial
         if rfc.startswith(rfc_generado):
@@ -1301,7 +1413,6 @@ class Menus(QMainWindow):
     
     def generar_curp_inicial(self, nombre_completo, fecha_nacimiento):
         nombres = nombre_completo.split()
-        print(nombres)
         estado = "xx"  # Si no hay estado, dejar vacío
         sexo = "x" 
         
@@ -1353,11 +1464,13 @@ class Menus(QMainWindow):
             return False  # No se pudo generar CURP inicial
         # Comparar solo la parte relevante (sin sexo ni estado)
         curp_relevante = curp_generada[:10] + curp_generada[13:16]  # Incluimos las consonantes internas (14, 15, 16)
-        curp_ingresada_relevante = curp[:10] + curp[13:16]  # Tomamos solo la parte relevante de la CURP ingresada
-        
-        print(curp_relevante)
+        curp_ingresada_relevante = curp[:10] + curp[13:16] 
+        print("curp ingresada") # Tomamos solo la parte relevante de la CURP ingresada
         print(curp_ingresada_relevante)
-
+        print("curp generada") # Validamos si las partes relevantes coinciden
+        print(curp_generada)
+        print("curp relevante")
+        print(curp_relevante)
         # Validamos si las partes relevantes coinciden
         if curp_ingresada_relevante == curp_relevante:
             return True
@@ -1397,8 +1510,6 @@ class Menus(QMainWindow):
         """Función para mostrar los datos del alumno seleccionado en los QLineEdit"""
         # Obtener el CURP seleccionado en el ComboBox
 
-        print(self.cp_seleccionado)
-
         # Verificar que se haya seleccionado un CURP válido
         if self.cp_seleccionado is None:
             return  # Si no hay CURP, no hace nada
@@ -1412,16 +1523,17 @@ class Menus(QMainWindow):
             if cp_info:
                 self.cargar_Colonia()
                 estado = cp_info[2]
+                municipio = cp_info[1]
                 # Actualizar el resto de los campos
                 self.ui.lineEdit_Estado.setText(estado)
+                self.ui.lineEdit_Municipio.setText(municipio)
 
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error", f"Error al mostrar datos del cp: {e}")
+            self.mostrar_mensaje("Exito","critico",f"Error al mostrar datos del cp: {e}") 
 
     def cargar_Colonia(self):
         cp = self.ui.comboBox_CP.currentText()
         cp_entero = int(cp)
-        print(cp)
         try:
             # Obtener todos los alumnos de la tabla
             cursor1.execute("SELECT colonia FROM cp_g WHERE codigo_postal = %s;", (cp_entero,))
@@ -1429,7 +1541,6 @@ class Menus(QMainWindow):
 
             # Limpiar el ComboBox y agregar la opción "Buscar"
             self.ui.comboBox_Colonia.clear()
-            self.ui.comboBox_Colonia.addItem("Buscar Colonia")  # Placeholder
 
             # Agregar alumnos al ComboBox
             for colonia in colonias:
@@ -1442,21 +1553,43 @@ class Menus(QMainWindow):
             self.ui.comboBox_Colonia.setCurrentIndex(0)
 
         except psycopg2.Error as e:
-            QMessageBox.critical(self, "Error", f"Error al cargar Colonia: {e}")
+            self.mostrar_mensaje("Error","critico",f"Error al cargar Colonia: {e}") 
 
+    def cargar_ColoniaEspecial(self):
+        rfcparent = self.ui.lineEdit_RFCPadre.text()
+        try:
+            # Obtener todos los alumnos de la tabla
+            cursor1.execute("SELECT colonia FROM domicilio_padre WHERE rfc_padre = %s;", (rfcparent,))
+            colonias = cursor1.fetchone()
+
+            # Limpiar el ComboBox y agregar la opción "Buscar"
+            self.ui.comboBox_Colonia.clear()
+
+            # Agregar alumnos al ComboBox
+            for colonia in colonias:
+                colonia1 = colonia
+                #curp, nombre, apellido_paterno, apellido_materno = alumno
+                #texto_combobox = f"{curp} {apellido_paterno} {apellido_materno} {nombre}"
+                self.ui.comboBox_Colonia.addItem(colonia1)  # Agregar CURP como dato asociado
+            
+            # Seleccionar el placeholder para que se muestre al inicio
+            self.ui.comboBox_Colonia.setCurrentIndex(0)
+
+        except psycopg2.Error as e:
+            self.mostrar_mensaje("Error","critico",f"Error al cargar Colonia: {e}") 
 
     def mostrar_datos_Colonia(self):
         colonia = self.ui.comboBox_Colonia.currentText()
-        """Función para mostrar los datos del alumno seleccionado en los QLineEdit"""
-        # Obtener el CURP seleccionado en el ComboBox
-
-        print(colonia)
 
         # Verificar que se haya seleccionado un CURP válido
         if colonia is None:
             return  # Si no hay CURP, no hacemos nada
-    
+        
+    def cargar_Cargo(self):
+        self.ui.comboBox_Cargo.addItem("CONTADOR")
+        self.ui.comboBox_Cargo.addItem("DIRECTOR")
 
+    
 
 if __name__ == "__main__":#
 
