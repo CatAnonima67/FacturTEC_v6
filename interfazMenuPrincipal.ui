@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1186</width>
-    <height>1024</height>
+    <width>1327</width>
+    <height>1111</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1696,7 +1696,7 @@ border: 1px solid white;
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>4</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page_Principal">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -2552,17 +2552,17 @@ color: black;
                       </property>
                       <property name="maximumDateTime">
                        <datetime>
-                        <hour>11</hour>
+                        <hour>5</hour>
                         <minute>59</minute>
                         <second>59</second>
                         <year>2025</year>
                         <month>1</month>
-                        <day>4</day>
+                        <day>5</day>
                        </datetime>
                       </property>
                       <property name="minimumDateTime">
                        <datetime>
-                        <hour>18</hour>
+                        <hour>12</hour>
                         <minute>0</minute>
                         <second>0</second>
                         <year>2006</year>
@@ -2943,6 +2943,18 @@ background-color:rgb(80,150,210);
              </layout>
             </widget>
             <widget class="QWidget" name="page_Factura">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>1096</width>
+               <height>1011</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">*{
 padding:0px;
@@ -2987,11 +2999,24 @@ font-family:Arial;
 		color: white;
     }</string>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_17" stretch="90,0">
+             <layout class="QVBoxLayout" name="verticalLayout_17" stretch="0,90">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_12">
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+font-size:26px;
+font-family:arial;
+}</string>
+                </property>
+                <property name="text">
+                 <string>FACTURA</string>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QScrollArea" name="scrollArea">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -2999,6 +3024,12 @@ font-family:Arial;
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
+                  <height>850</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
                   <height>850</height>
                  </size>
                 </property>
@@ -3010,9 +3041,21 @@ font-family:Arial;
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>920</width>
-                   <height>1247</height>
+                   <width>1061</width>
+                   <height>1894</height>
                   </rect>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>1061</width>
+                   <height>3000</height>
+                  </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QTextEdit{
@@ -3029,7 +3072,7 @@ font-family:Arial;
 }
 </string>
                  </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_18" stretch="5,12,12,12,12,12,12,12">
+                 <layout class="QVBoxLayout" name="verticalLayout_18" stretch="5,12,12,12,12,12,12,0,0">
                   <property name="spacing">
                    <number>5</number>
                   </property>
@@ -3043,7 +3086,7 @@ font-family:Arial;
                    <number>0</number>
                   </property>
                   <property name="bottomMargin">
-                   <number>0</number>
+                   <number>50</number>
                   </property>
                   <item>
                    <widget class="QWidget" name="widget_2" native="true">
@@ -3053,7 +3096,7 @@ font-family:Arial;
                       <height>50</height>
                      </size>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                    <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,90">
                      <property name="leftMargin">
                       <number>5</number>
                      </property>
@@ -3066,7 +3109,7 @@ font-family:Arial;
                      <property name="bottomMargin">
                       <number>0</number>
                      </property>
-                     <item>
+                     <item alignment="Qt::AlignHCenter">
                       <widget class="QLabel" name="label_16">
                        <property name="maximumSize">
                         <size>
@@ -3075,7 +3118,10 @@ font-family:Arial;
                         </size>
                        </property>
                        <property name="text">
-                        <string>Lupa</string>
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap>Icono_Proyecto/Lupa.png</pixmap>
                        </property>
                       </widget>
                      </item>
@@ -3289,6 +3335,12 @@ font-family:Arial;
                      </size>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_17">
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QWidget" name="widget_17" native="true">
                        <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -3305,8 +3357,18 @@ font-family:Arial;
                           </property>
                          </widget>
                         </item>
-                        <item>
-                         <widget class="QComboBox" name="comboBox_Moneda"/>
+                        <item alignment="Qt::AlignHCenter">
+                         <widget class="QLineEdit" name="lineEdit_Moneda">
+                          <property name="maximumSize">
+                           <size>
+                            <width>80</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>MXN</string>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </widget>
@@ -3328,12 +3390,9 @@ font-family:Arial;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QComboBox" name="comboBox_MetodoPago">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
+                         <widget class="QLineEdit" name="lineEdit_MetodoPago">
+                          <property name="text">
+                           <string>Pago en una sola exhibición</string>
                           </property>
                          </widget>
                         </item>
@@ -3348,20 +3407,23 @@ font-family:Arial;
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>50</height>
+                      <height>60</height>
                      </size>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_20">
-                     <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_20" stretch="10,90">
+                     <item alignment="Qt::AlignHCenter">
                       <widget class="QLabel" name="label_33">
                        <property name="maximumSize">
                         <size>
-                         <width>100</width>
+                         <width>60</width>
                          <height>16777215</height>
                         </size>
                        </property>
                        <property name="text">
-                        <string>Lupa</string>
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap>Icono_Proyecto/Lupa.png</pixmap>
                        </property>
                       </widget>
                      </item>
@@ -3387,6 +3449,18 @@ font-family:Arial;
                      </size>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_21">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QWidget" name="widget_19" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -3511,6 +3585,21 @@ font-family:Arial;
                      </size>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_29">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QWidget" name="widget_26" native="true">
                        <layout class="QHBoxLayout" name="horizontalLayout_26">
@@ -3559,6 +3648,21 @@ font-family:Arial;
                      </size>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_39">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QTableWidget" name="tableWidget_Factura">
                        <property name="styleSheet">
@@ -3620,97 +3724,111 @@ font-weight: bold;
                     </layout>
                    </widget>
                   </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QWidget" name="widget_7" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>600</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+color:black;
+background-color: rgb(206,202,210);
+padding: 10px;
+}
+QPushButton:hover{
+border: 1px solid black;
+}</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_36">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_Preevisualizar">
+                       <property name="text">
+                        <string>PREEVISUALIZAR</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>Icono_Proyecto/Icono_Vizualizar.png</normaloff>Icono_Proyecto/Icono_Vizualizar.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>28</width>
+                         <height>28</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_ImprimirFactura">
+                       <property name="text">
+                        <string>CONFIRMAR</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>Icono_Proyecto/Icono_enviar.png</normaloff>Icono_Proyecto/Icono_enviar.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>32</width>
+                         <height>32</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_EliminarFactura">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+background-color:rgb(210,50,50);
+color:white;
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>ELIMINAR</string>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>28</width>
+                         <height>28</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
                  </layout>
                 </widget>
-               </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_7" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton:hover{
-border: 1px solid black;
-}
-QPushButton{
-font-size:13px;
-}
-QPushButton{
-background-color:rgb(217,217,217);
-color:black;
-}</string>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_36">
-                 <item>
-                  <widget class="QPushButton" name="pushButton_ImprimirFactura">
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>PREEVISUALIZAR</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>Icono_Proyecto/Icono_Vizualizar.png</normaloff>Icono_Proyecto/Icono_Vizualizar.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>32</width>
-                     <height>32</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_PrevisualizarFactura">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>31</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>CONFIRMAR</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>Icono_Proyecto/Icono_enviar.png</normaloff>Icono_Proyecto/Icono_enviar.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>32</width>
-                     <height>32</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_EliminarFactura">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>31</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton:hover{
-border: 1px solid white;
-background-color:rgb(209,48,48);
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>ELIMINAR</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
                </widget>
               </item>
              </layout>
@@ -4101,7 +4219,7 @@ color: black;
                         <second>0</second>
                         <year>1960</year>
                         <month>1</month>
-                        <day>5</day>
+                        <day>8</day>
                        </datetime>
                       </property>
                       <property name="time">
@@ -4113,22 +4231,22 @@ color: black;
                       </property>
                       <property name="maximumDateTime">
                        <datetime>
-                        <hour>11</hour>
+                        <hour>5</hour>
                         <minute>59</minute>
                         <second>59</second>
                         <year>2007</year>
                         <month>1</month>
-                        <day>2</day>
+                        <day>3</day>
                        </datetime>
                       </property>
                       <property name="minimumDateTime">
                        <datetime>
-                        <hour>18</hour>
+                        <hour>12</hour>
                         <minute>0</minute>
                         <second>0</second>
                         <year>1960</year>
                         <month>1</month>
-                        <day>2</day>
+                        <day>3</day>
                        </datetime>
                       </property>
                       <property name="calendarPopup">
